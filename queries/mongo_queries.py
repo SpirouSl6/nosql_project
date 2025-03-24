@@ -73,7 +73,7 @@ def q7(db):
         {"$sort": {"count": -1}},
         {"$project": {"director": "$_id", "count": 1, "_id": 0}}
     ]
-    return list(db.films.aggregate(pipeline))[0]
+    return list(db.films.aggregate(pipeline))
 
 
 def q8(db):
