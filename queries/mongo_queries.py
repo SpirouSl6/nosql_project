@@ -44,10 +44,10 @@ def q4(db):
 
 def q5(db):
     pipeline = [
-        { "$project": { "genres": { "$split": ["$genre", ","] } } }, # Sépare la chaîne de genres en tableau
-        { "$unwind": "$genres" },                                    # Décompose la liste en plusieurs documents
-        { "$group": { "_id": { "$trim": { "input": "$genres" } } } },  # Supprime les espaces et groupe les genres uniques
-        { "$sort": { "_id": 1 }}                                     # Trie en ordre alphabétique
+        {"$project": { "genres": { "$split": ["$genre", ","]}}}, # Sépare la chaîne de genres en tableau
+        {"$unwind": "$genres" },                                    # Décompose la liste en plusieurs documents
+        {"$group": { "_id": { "$trim": { "input": "$genres"}}}},  # Supprime les espaces et groupe les genres uniques
+        {"$sort": { "_id": 1 }}                                     # Trie en ordre alphabétique
     ]
     
     result = list(db.films.aggregate(pipeline))
@@ -65,6 +65,27 @@ def q6(db):
     result = list(db.films.aggregate(pipeline))
     return result[0]
 
+
+def q7(db):
+    pipeline = [
+        {"$group": {"_id": "$Director", "count": {"$sum": 1}}},
+        {"$match": {"count": {"$gt": 5}}},
+        {"$sort": {"count": -1}},
+        {"$project": {"director": "$_id", "count": 1, "_id": 0}}
+    ]
+    return list(db.films.aggregate(pipeline))[0]
+
+
+def q8(db):
+    pipeline = [
+        {"$match": {"Revenue (Millions)": {"$exists": True, "$nin": ["", 0]}}},
+        {"$project": {"genres": { "$split": ["$genre", ","]}, "Revenue (Millions)": 1}}, # Sépare la chaîne de genres en tableau
+        {"$unwind": "$genres"},
+        {"$group": {"_id": { "$trim": { "input": "$genres"}}, "avg_revenue": {"$avg": "$Revenue (Millions)"}}},
+        {"$sort": {"avg_revenue": -1}},
+        {"$limit": 1}
+    ]
+    return list(db.films.aggregate(pipeline))[0]
 
 
 
