@@ -44,10 +44,10 @@ def q4(db):
 
 def q5(db):
     pipeline = [
-        {"$project": {"genres": {"$split": ["$genre", ", "]}}},  # Sépare la chaîne en une liste
-        {"$unwind": "$genres"},  # Décompose chaque genre individuellement
-        {"$group": {"_id": 0, "genres": {"$addToSet": "$genres"}}},  # Évite les doublons
-        {"$project": {"_id": 0, "genres": 1}}  # ne garder que la liste des genres
+        { "$project": { "genres": { "$split": ["$genre", ","] } } }, # Sépare la chaîne de genres en tableau
+        { "$unwind": "$genres" },                                    # Décompose la liste en plusieurs documents
+        { "$group": { "_id": { "$trim": { "input": "$genres" } } } },  # Supprime les espaces et groupe les genres uniques
+        { "$sort": { "_id": 1 }}                                     # Trie en ordre alphabétique
     ]
     
     result = list(db.films.aggregate(pipeline))
