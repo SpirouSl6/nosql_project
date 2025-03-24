@@ -41,3 +41,10 @@ def q4(db):
 
     st.pyplot(fig)  # Affiche le graphique dans Streamlit
 
+
+def q5(db):
+    return db.films.distinct("genre")
+
+
+def q6(db):
+    return db.films.find_one({}, sort=[("revenue", -1)], projection={"title": 1, "revenue": 1})
