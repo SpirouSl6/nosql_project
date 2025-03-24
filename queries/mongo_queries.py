@@ -54,4 +54,21 @@ def q5(db):
 
 
 def q6(db):
-    return db.films.find_one({}, sort=[("revenue", -1)], projection={"title": 1, "revenue": 1})
+    return db.films.find_one({}, sort=[("Revenue", -1)], projection={"title": 1, "Revenue": 1})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
