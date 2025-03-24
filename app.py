@@ -4,10 +4,15 @@ from database.mongo import get_database
 
 db = get_database()  # Récupération de la base de données
 
-st.title("NoSQL Databases - Projet")
-st.header("Requêtes MongoDB")
+st.sidebar.header("Test de connexion MongoDB")
 
-result_q1 = q1(db)
-st.write("Année avec le plus grand nombre de films sortis :", result_q1[0]['_id'], "avec", result_q1[0]['count'], "films.")
-st.write("Nombre de films sortis après 1999 :", q2(db))
+if db:
+    try:
+        collections = db.list_collection_names()
+        st.sidebar.success("Connexion réussie à MongoDB ✅")
+        st.sidebar.write(f"Collections disponibles : {collections}")
+    except Exception as e:
+        st.sidebar.error(f"Erreur d'accès aux collections : {e}")
+else:
+    st.sidebar.error("Connexion à MongoDB échouée ❌")
 
