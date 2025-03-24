@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import scipy.stats as stats
+import streamlit as st
 
 def q1(db):
     pipeline = [
@@ -18,8 +19,8 @@ def q2(db):
 
 def q3(db):
     pipeline = [
-        {"$match": {"year": 2007}},
-        {"$group": {"_id": None, "avg_rating": {"$avg": "$rating"}}}]
+        {"$match": {"year": 2007, "rating": {"$exists": True, "$ne": None}}},
+        {"$group": {"_id": 0, "avg_rating": {"$avg": "$rating"}}}]
     result = list(db.films.aggregate(pipeline))
     return result[0]["avg_rating"]
 
@@ -31,10 +32,12 @@ def q4(db):
     data = list(db.films.aggregate(pipeline))
     years = [d["_id"] for d in data]    # Liste des années
     counts = [d["count"] for d in data]   # Liste des nombres de films
+ 
+    fig, ax = plt.subplots(figsize=(12, 6))
+    sns.barplot(x=years, y=counts, ax=ax)   #Crée un histogramme
+    ax.set_xlabel("Année")
+    ax.set_ylabel("Nombre de films")
+    ax.set_title("Nombre de films par année")
 
-    sns.barplot(x=years, y=counts)  #Crée un histogramme
-    plt.xlabel("Année")
-    plt.ylabel("Nombre de films")
-    plt.title("Nombre de films par année")
-    plt.show()
+    st.pyplot(fig)  # Affiche le graphique dans Streamlit
 
