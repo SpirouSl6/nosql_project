@@ -1,3 +1,6 @@
+from queries.mongo_queries import *
+from database.mongo import get_database
+
 def q1(db):
     pipeline = [
         {"$group": {"_id": "$year", "count": {"$sum": 1}}},
@@ -7,7 +10,6 @@ def q1(db):
     return list(result)
 
 def q2(db):
-    pipeline = {"year": {"$gt": 1999}}
-    result = db.films.count_documents(pipeline)
+    result = db.films.count_documents({"year": {"$gt": 1999}})
     return result
 
