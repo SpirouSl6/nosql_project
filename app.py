@@ -18,10 +18,10 @@ st.write("Les genres de films disponibles dans la bases :", ", ".join(q5(db)))
 st.write("Le film qui a généré le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus.".format(q6(db)["title"], q6(db)["Revenue (Millions)"]))
 
 
-if not q7(db):
+if not (q7(db)):
     st.write("Il n'y a pas de réalisateurs ayant réalisé plus de 5 films dans la base de données.")
 else:
-    st.write("Les réalisateurs ayant réalisé plus de 5 films dans la base de données :", ", ".join(q5(db)['director']))
+    st.write("Les réalisateurs ayant réalisé plus de 5 films dans la base de données :", ", ".join(q7(db)['director']))
     
 st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["genres"], q8(db)["Revenue (Millions)"]))
 
