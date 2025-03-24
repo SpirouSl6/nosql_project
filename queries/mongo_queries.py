@@ -54,11 +54,14 @@ def q5(db):
 
 
 def q6(db):
-    return db.films.find_one({"Revenue (Millions)": {"$exists": True, "$ne": None}},  # Filtre pour exclure les valeurs vides
-        sort=[("Revenue (Millions)", -1)],  # Tri décroissant
-        projection={"title": 1, "Revenue (Millions)": 1, "_id": 0})
-
-
+    pipeline = [
+        {"$sort": {"Revenue (Millions)": -1}},  # Trier par revenu décroissant
+        {"$limit": 1},  # Garder uniquement le premier
+        {"$project": {"title": 1, "Revenue (Millions)": 1}} 
+    ]
+    
+    result = list(db.films.aggregate(pipeline))
+    return result[0]
 
 
 
