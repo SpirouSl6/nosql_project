@@ -6,7 +6,7 @@ db = get_database()  # Récupération de la base de données
 
 st.sidebar.header("Test de connexion MongoDB")
 
-if db:
+if db is not None: 
     try:
         collections = db.list_collection_names()
         st.sidebar.success("Connexion réussie à MongoDB ✅")
