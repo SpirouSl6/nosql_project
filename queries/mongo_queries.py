@@ -51,7 +51,7 @@ def q5(db):
     ]
     
     result = list(db.films.aggregate(pipeline))
-    return [doc["_id"] for doc in result]
+    return [d["_id"] for d in result]
 
 
 def q6(db):
