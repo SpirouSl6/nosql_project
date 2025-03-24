@@ -55,6 +55,7 @@ def q5(db):
 
 def q6(db):
     pipeline = [
+        {"$match": {"Revenue (Millions)": {"$exists": True, "$ne": None}}},  # Exclure les valeurs nulles
         {"$sort": {"Revenue (Millions)": -1}},  # Trier par revenu décroissant
         {"$limit": 1},  # Garder uniquement le premier
         {"$project": {"title": 1, "Revenue (Millions)": 1}} 
