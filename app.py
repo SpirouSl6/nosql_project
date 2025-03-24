@@ -14,8 +14,7 @@ st.write("Histogramme nombres de films par année : ")
 q4(db)
 
 
-st.write("Les genres de films disponibles dans la bases")
-st.write("\n".join(f"- {q5(db)}" for genre in q5(db)))
+st.write("Les genres de films disponibles dans la bases", ", ".join(q5(db)))
 st.write("Le film qui a généré le plus de revenu est ", q6(db)['title'], "avec ",q6(db)['revenue'], "millions de revenus." )
 
 

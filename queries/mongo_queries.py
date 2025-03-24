@@ -43,7 +43,14 @@ def q4(db):
 
 
 def q5(db):
-    return db.films.distinct("genre")
+    genres = db.films.distinct("genre")  # Récupère les chaînes de genres uniques
+    genre_set = set()  # Utilisation d'un ensemble pour éviter les doublons
+
+    for genre_str in genres:
+        genre_list = genre_str.split(",")  # Sépare les genres dans les chaînes de caractères
+        genre_set.update(g.strip() for g in genre_list)  # Nettoie et ajoute les genres
+
+    return genre_set
 
 
 def q6(db):
