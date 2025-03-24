@@ -7,7 +7,7 @@ def q1(db):
     return list(result)
 
 def q2(db):
-    pipeline = [{"year": {"$gt": 1999}}]
+    pipeline = {"year": {"$gt": 1999}}
     result = db.films.count_documents(pipeline)
     return result
 

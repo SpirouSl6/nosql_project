@@ -7,6 +7,7 @@ db = get_database()  # Récupération de la base de données
 st.title("NoSQL Databases - Projet")
 st.header("Requêtes MongoDB")
 
-st.write("Année avec le plus grand nombre de films sortis :", q1(db)[0]['_id'], "avec", q1(db)[0]['count'], "films.")
+result_q1 = q1(db)
+st.write("Année avec le plus grand nombre de films sortis :", result_q1[0]['_id'], "avec", result_q1[0]['count'], "films.")
 st.write("Nombre de films sortis après 1999 :", q2(db))
 
