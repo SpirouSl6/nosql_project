@@ -46,7 +46,7 @@ def q5(db):
     pipeline = [
         {"$project": {"genres": {"$split": ["$genre", ", "]}}},  # Sépare la chaîne en une liste
         {"$unwind": "$genres"},  # Décompose chaque genre individuellement
-        {"$group": {"genres": {"$addToSet": "$genres"}}},  # Évite les doublons
+        {"$group": {"_id": 0, "genres": {"$addToSet": "$genres"}}},  # Évite les doublons
         {"$project": {"_id": 0, "genres": 1}}  # ne garder que la liste des genres
     ]
     
