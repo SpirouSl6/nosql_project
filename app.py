@@ -24,7 +24,7 @@ else:
     directors = [d["_id"] for d in q7(db)]  # Extraire les noms des réalisateurs
     st.write("Les réalisateurs ayant réalisé plus de 5 films dans la base de données :", ", ".join(directors))
     
-st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["genres"], q8(db)["Revenue (Millions)"]))
+st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["_id"], q8(db)["Revenue (Millions)"]))
 
 
 
