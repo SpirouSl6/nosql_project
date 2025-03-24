@@ -43,14 +43,14 @@ def q4(db):
 
 
 def q5(db):
-    genres = db.films.distinct("genre")  # Récupère les chaînes de genres uniques
-    genre_set = set()  # Utilisation d'un ensemble pour éviter les doublons
-
-    for genre_str in genres:
-        genre_list = genre_str.split(",")  # Sépare les genres dans les chaînes de caractères
-        genre_set.update(g.strip() for g in genre_list)  # Nettoie et ajoute les genres
-
-    return genre_set
+    pipeline = [
+        {"$unwind": "$genre"},  # Sépare les genres en plusieurs documents
+        {"$group": {"_id": None, "genres": {"$addToSet": "$genre"}}},  # Regroupe en un set unique
+        {"$project": {"genres": 1}}  # ne garder que les genres
+    ]
+    
+    result = list(db.films.aggregate(pipeline))
+    return result[0]["genres"]
 
 
 def q6(db):
