@@ -15,7 +15,7 @@ q4(db)
 
 
 st.write("Les genres de films disponibles dans la bases :", ", \n ".join(q5(db)))
-st.write("Le film qui a généré le plus de revenuS est ", q6(db)['title'], "avec ", q6(db)['Revenue'], "millions de revenus.")
+st.write("Le film qui a généré le plus de revenuS est ", q6(db)['title'], "avec ", q6(db)['Revenue (Millions)'], "millions de revenus.")
 
 
 
