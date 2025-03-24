@@ -30,7 +30,7 @@ def q4(db):
         {"$group": {"_id": "$year", "count": {"$sum": 1}}},
         {"$sort": {"_id": 1}}]
     data = list(db.films.aggregate(pipeline))
-    years = [d["_id"] for d in data]    # Liste des années
+    years = [int(d["_id"]) for d in data]    # Liste des années
     counts = [d["count"] for d in data]   # Liste des nombres de films
  
     fig, ax = plt.subplots(figsize=(12, 6))
