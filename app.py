@@ -83,13 +83,6 @@ for i in q13(db):
     avg_runtime = i["avg_runtime"]
     st.write(f"- **{decade}s** : Durée moyenne = {avg_runtime:.2f} minutes")
 
-df = pd.DataFrame(q13(db))
-plt.plot(df["_id"], df["avg_runtime"], marker='o', color='b')
-plt.title('Évolution de la durée moyenne des films par décennie')
-plt.xlabel('Décennie')
-plt.ylabel('Durée moyenne (minutes)')
-plt.grid(True)
-st.pyplot(plt)
 
 
 

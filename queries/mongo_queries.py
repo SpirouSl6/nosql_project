@@ -144,5 +144,16 @@ def q13(db):
         {"$group": {"_id": "$decade", "avg_runtime": {"$avg": "$runtime"}}},
         {"$sort": {"_id": 1}}
     ]
-    return list(db.films.aggregate(pipeline))
+    data = list(db.films.aggregate(pipeline))
+    
+    years = [d["_id"] for d in data]    # Liste des années
+    time = [d["avg_runtime"] for d in data]   # Liste des nombres de films
+    fig, ax = plt.subplots(figsize=(12, 6))
+    sns.barplot(x=years, y=time, ax=ax)   #Crée un histogramme
+    ax.set_xlabel("Décennie")
+    ax.set_ylabel("Durée moyenne (minutes)")
+    ax.set_title("Évolution de la durée moyenne des films par décennie")
+    st.pyplot(fig)  # Affiche le graphique dans Streamlit
+    
+    return data
 
