@@ -101,17 +101,14 @@ def q9(db):
 
 def q10(db):
     pipeline = [
-        {"$unwind": "$genre"},
-        {"$sort": {"runtime": -1}},
-        {"$group": {"_id": "$genre", "longest_movie": {"$first": "$title"}}}
+        {"$match": {"Runtime (Minutes)": {"$exists": True, "$ne": None}}},  # Filtrer les films sans durée
+        {"$project": {"title": 1, "genres": { "$split": ["$genre", ","]}, "runtime": "$Runtime (Minutes)"}}, 
+        {"$unwind": "$genres" },                                    # Décompose la liste en plusieurs documents
+        {"$set": {"genres": { "$trim": { "input": "$genres"}}}},  # Supprime les espaces et groupe les genres uniques
+        {"$group": {"_id": "$genres", "max_runtime": {"$max": "$runtime"}, "longest_movie": {"$first": "$title"}}},
+        {"$sort": {"max_runtime": -1}}
     ]
     return list(db.films.aggregate(pipeline))
-
-
-
-
-
-
 
 
 

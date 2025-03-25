@@ -36,6 +36,14 @@ for entry in q9(db):
     for movie in movies:
         st.write(f"- **{movie['title']}** (Note: {movie['rating']})")  # Liste à puces
     st.write("---")  # Séparation entre les décennies
+    
+
+st.write("### Films les plus longs par genre")
+for entry in q10(db):
+    genre = entry["_id"]
+    title = entry["longest_movie"]
+    runtime = entry["max_runtime"]
+    st.write(f"- **{genre}** : {title} (**{runtime} min**)")
         
         
         
