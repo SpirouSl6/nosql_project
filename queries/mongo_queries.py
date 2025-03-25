@@ -111,4 +111,28 @@ def q10(db):
     return list(db.films.aggregate(pipeline))
 
 
+def q11(db): 
+    pipeline = [{"$match": {"Metascore": {"$gt": 80}, "Revenue (Millions)": {"$gt": 50000000}}}]
+    
+    # Création de la vue
+    db.command({"create": "view_q11", "viewOn": "films", "pipeline": pipeline})
+    print(f"Vue view_q11 créée avec succès !")
+    
+
+def q12(db):
+    movies = list(db.films.find({}, {"Runtime (Minutes)": 1, "Revenue (Millions)": 1, "_id": 0}))
+    df = pd.DataFrame(movies)
+    df.dropna(subset=["runtime", "revenue"], inplace=True)
+    correlation, p_value = stats.pearsonr(df["Runtime (Minutes)"], df["Revenue (Millions)"])
+    return correlation, p_value
+
+
+def q13(db):
+    pipeline = [
+        {"$match": {"year": {"$exists": True, "$ne": None}, "Runtime (Minutes)": {"$exists": True, "$ne": None}}},
+        {"$project": {"decade": {"$subtract": ["$year", {"$mod": ["$year", 10]}]}, "runtime": "$Runtime (Minutes)"}},
+        {"$group": {"_id": "$decade", "avg_runtime": {"$avg": "$runtime"}}},
+        {"$sort": {"_id": 1}}
+    ]
+    return list(db.films.aggregate(pipeline))[0]
 

@@ -45,7 +45,7 @@ for i in range (len(q9(db))):
     st.write(f"#### {decade}s")  # Affichage de la décennie en titre
     for movie in movies:
         st.write(f"- **{movie['title']}** (Note: {movie['rating']})")  # Liste à puces
-    st.write("---")  # Séparation entre les décennies
+    st.write("---")    # Séparation
     
 
 st.write("### Films les plus longs par genre")
@@ -56,9 +56,42 @@ for i in q10(db):
     st.write(f"- **{genre}** : {title} (**{runtime} min**)")
 st.write("---")        
         
-        
-        
-        
-        
-        
+
+q11(db)        
+st.write("### Films avec un metascore supérieur à 80 et générant plus de 50 millions de dollars:")
+for film in db.view_q11.find():
+    st.write(f"**{film['title']}**")
+    st.write(f"Metascore: {film['Metascore']}")
+    st.write(f"Revenue: {film['Revenue (Millions)']} millions$")
+    st.write("---")  
+   
+
+st.write("### Calcul de la corrélation entre la durée des films et leur revenu")
+correlation, p_value = q12(db)
+if correlation is not None:
+    st.write(f"**Corrélation (r)** : {correlation:.2f}")
+    st.write(f"**P-value** : {p_value:.5f}")
+    if p_value < 0.05:
+        st.markdown("La corrélation est statistiquement significative (p-value < 0.05).")
+    else:
+        st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
+else:
+    st.write("Pas de données suffisantes pour le calcul.")
+st.write("---")  
+
+
+st.write("### Évolution de la durée moyenne des films par décennie")
+for i in q13(db):
+    decade = i["_id"]
+    avg_runtime = i["avg_runtime"]
+    st.write(f"- **{decade}s** : Durée moyenne = {avg_runtime:.2f} minutes")
+
+
+
+
+
+
+
+
+
         
