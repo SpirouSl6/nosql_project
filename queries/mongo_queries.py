@@ -108,7 +108,7 @@ def q10(db):
         {"$group": {"_id": "$genres", "max_runtime": {"$max": "$runtime"}, "longest_movie": {"$first": "$title"}}},
         {"$sort": {"max_runtime": -1}}
     ]
-    return list(db.films.aggregate(pipeline))[0]
+    return list(db.films.aggregate(pipeline))
 
 
 

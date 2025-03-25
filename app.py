@@ -8,14 +8,23 @@ st.title("NoSQL Databases - Projet")
 st.header("Requêtes MongoDB")
 
 st.write("Année avec le plus grand nombre de films sortis : ", q1(db)['_id'],  "avec", q1(db)['count'], "films.")
+st.write("---")
+
 st.write("Nombre de films sortis après 1999 : ", q2(db))
+st.write("---")
+
 st.write("Moyenne des votes des films sortis en 2007 : ", q3(db))
+st.write("---")
+
 st.write("Histogramme nombres de films par année : ")
 q4(db)
-
+st.write("---")
 
 st.write("Les genres de films disponibles dans la bases :", ", ".join(q5(db)))
+st.write("---")
+
 st.write("Le film qui a généré le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus.".format(q6(db)["title"], q6(db)["Revenue (Millions)"]))
+st.write("---")
 
 
 if not q7(db):
@@ -23,9 +32,10 @@ if not q7(db):
 else:
     directors = [d["_id"] for d in q7(db)]  # Extraire les noms des réalisateurs
     st.write("Les réalisateurs ayant réalisé plus de 5 films dans la base de données :", ", ".join(directors))
+st.write("---")
     
 st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["_id"], q8(db)["avg_revenue"]))
-
+st.write("---")
 
 st.write("### Les 3 films les mieux notés pour chaque décennie :")
 for i in range (len(q9(db))):
@@ -40,11 +50,11 @@ for i in range (len(q9(db))):
 
 st.write("### Films les plus longs par genre")
 for i in range (len(q10(db))):
-    genre = q10(db)['_id']
-    title = q10(db)['longest_movie']
-    runtime = q10(db)['max_runtime']
+    genre = i['_id']
+    title = i['longest_movie']
+    runtime = i['max_runtime']
     st.write(f"- **{genre}** : {title} (**{runtime} min**)")
-        
+st.write("---")        
         
         
         
