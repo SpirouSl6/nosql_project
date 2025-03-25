@@ -134,10 +134,10 @@ def q12(db):
         return None, None
     df = pd.DataFrame(movies)
     # Vérification que les colonnes 'runtime' et 'revenue' existent dans le DataFrame
-    if 'runtime' not in df.columns or 'revenue' not in df.columns:
+    if 'Runtime (Minutes)' not in df.columns or 'Revenue (Millions)' not in df.columns:
         print("Les colonnes 'runtime' ou 'revenue' sont manquantes dans les données.")
         return None, None
-    df.dropna(subset=["runtime", "revenue"], inplace=True)
+    df.dropna(subset=["Runtime (Minutes)", "Revenue (Millions)"], inplace=True)
     # Calcul de la corrélation entre 'runtime' et 'revenue'
     if len(df) == 0:
         print("Aucune donnée valide pour le calcul de la corrélation.")
