@@ -88,7 +88,24 @@ def q8(db):
     return list(db.films.aggregate(pipeline))[0]
 
 
+def q9(db):
+    pipeline = [
+        {"$match": {"year": {"$exists": True, "$ne": None}, "rating": "G"}},
+        {"$project": {"decade": {"$subtract": ["$year", {"$mod": ["$year", 10]}]}, "title": 1, "rating": 1}},
+        {"$sort": {"decade": 1, "rating": -1}},
+        {"$group": {"_id": "$decade", "title": {"$push": {"title": "$title", "rating": "$rating"}}}},
+        {"$project": {"decade": "$_id", "title": {"$slice": ["$title", 3]}}}
+    ]
+    return list(db.films.aggregate(pipeline))
 
+
+def q10(db):
+    pipeline = [
+        {"$unwind": "$genre"},
+        {"$sort": {"runtime": -1}},
+        {"$group": {"_id": "$genre", "longest_movie": {"$first": "$title"}}}
+    ]
+    return list(db.films.aggregate(pipeline))
 
 
 

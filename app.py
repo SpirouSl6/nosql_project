@@ -27,4 +27,20 @@ else:
 st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["_id"], q8(db)["avg_revenue"]))
 
 
+st.write("### Les 3 films les mieux notés pour chaque décennie :")
+for entry in q9(db):
+    decade = entry["decade"]
+    movies = entry["title"]
 
+    st.write(f"#### {decade}s")  # Affichage de la décennie en titre
+    for movie in movies:
+        st.write(f"- **{movie['title']}** (Note: {movie['rating']})")  # Liste à puces
+    st.write("---")  # Séparation entre les décennies
+        
+        
+        
+        
+        
+        
+        
+        
