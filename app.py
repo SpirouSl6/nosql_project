@@ -68,15 +68,12 @@ for film in db.view_q11.find():
 
 st.write("### Calcul de la corrélation entre la durée des films et leur revenu")
 correlation, p_value = q12(db)
-if correlation is not None:
-    st.write(f"**Corrélation (r)** : {correlation:.2f}")
-    st.write(f"**P-value** : {p_value:.5f}")
-    if p_value < 0.05:
-        st.markdown("La corrélation est statistiquement significative (p-value < 0.05).")
-    else:
-        st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
+st.write(f"**Corrélation (r)** : {correlation:.2f}")
+st.write(f"**P-value** : {p_value:.5f}")
+if p_value < 0.05:
+    st.markdown("La corrélation est statistiquement significative (p-value < 0.05).")
 else:
-    st.write("Erreur dans le calcul de la corrélation.")
+    st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
 st.write("---")  
 
 
