@@ -82,7 +82,7 @@ for i in q13(db):
     decade = i["_id"]
     avg_runtime = i["avg_runtime"]
     st.write(f"- **{decade}s** : Durée moyenne = {avg_runtime:.2f} minutes")
-
+st.write("---")  
 
 
 
