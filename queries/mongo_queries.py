@@ -3,6 +3,7 @@ import seaborn as sns
 import pandas as pd
 import scipy.stats as stats
 import streamlit as st
+from pymongo.errors import OperationFailure
 
 def q1(db):
     pipeline = [
@@ -112,8 +113,15 @@ def q10(db):
 
 
 def q11(db): 
-    pipeline = [{"$match": {"Metascore": {"$gt": 80}, "Revenue (Millions)": {"$gt": 50000000}}}]
+    pipeline = [{"$match": {"Metascore": {"$gt": 80}, "Revenue (Millions)": {"$gt": 50}}}]
     
+    # Supprimer la vue si elle existe déjà
+    try:
+        db.view_q11.drop()
+        print("Vue 'view_q11' supprimée")
+    except OperationFailure:
+        print("La vue 'view_q11' n'existe pas.")
+        
     # Création de la vue
     db.command({"create": "view_q11", "viewOn": "films", "pipeline": pipeline})
     print(f"Vue 'view_q11' créée avec succès !")
