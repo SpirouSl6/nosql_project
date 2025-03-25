@@ -137,6 +137,11 @@ def q12(db):
     # Créer le DataFrame
     df = pd.DataFrame(movies)
     print("Colonnes dans le DataFrame :", df.columns)
+    
+    print("Extrait des données :")
+    print(df.head())
+    print("Types des colonnes :")
+    print(df.dtypes)
 
     if 'Runtime (Minutes)' not in df.columns or 'Revenue (Millions)' not in df.columns:
         print("Les colonnes 'Runtime (Minutes)' ou 'Revenue (Millions)' sont manquantes dans les données.")
