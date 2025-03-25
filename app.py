@@ -49,7 +49,7 @@ for i in range (len(q9(db))):
     
 
 st.write("### Films les plus longs par genre")
-for i in range (len(q10(db))):
+for i in q10(db):
     genre = i['_id']
     title = i['longest_movie']
     runtime = i['max_runtime']
