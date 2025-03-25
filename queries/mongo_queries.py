@@ -116,7 +116,7 @@ def q11(db):
     
     # Création de la vue
     db.command({"create": "view_q11", "viewOn": "films", "pipeline": pipeline})
-    print(f"Vue view_q11 créée avec succès !")
+    print(f"Vue 'view_q11' créée avec succès !")
     
 
 def q12(db):
