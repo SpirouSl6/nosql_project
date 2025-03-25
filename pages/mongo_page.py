@@ -1,6 +1,6 @@
 import streamlit as st
-from queries.mongo_queries import *
-from database.mongo import get_database
+from connexion.mongo_queries import *
+from connexion.mongo_co import get_database
 
 db = get_database()  # Récupération de la base de données
 
