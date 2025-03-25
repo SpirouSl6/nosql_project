@@ -62,7 +62,7 @@ st.write("### Films avec un metascore supérieur à 80 et générant plus de 50 
 for film in db.view_q11.find():
     st.write(f"**{film['title']}**")
     st.write(f"Metascore: {film['Metascore']}")
-    st.write(f"Revenue: {film['Revenue (Millions)']} millions$")
+    st.write(f"Revenue: {film['Revenue (Millions)']} millions d'euros")
     st.write("---")  
    
 

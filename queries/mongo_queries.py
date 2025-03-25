@@ -147,6 +147,8 @@ def q12(db):
         print("Les colonnes 'Runtime (Minutes)' ou 'Revenue (Millions)' sont manquantes dans les données.")
         return None, None
 
+    # Convertir la colonne 'Revenue (Millions)' en float
+    df['Revenue (Millions)'] = pd.to_numeric(df['Revenue (Millions)'], errors='coerce')
     df.dropna(subset=["Runtime (Minutes)", "Revenue (Millions)"], inplace=True)
     if len(df) == 0:
         print("Aucune donnée valide pour le calcul de la corrélation.")
