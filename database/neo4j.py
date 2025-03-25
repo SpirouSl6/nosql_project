@@ -1,5 +1,8 @@
 from neo4j import GraphDatabase
 import config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Neo4jConnection:
     def __init__(self):
@@ -7,7 +10,7 @@ class Neo4jConnection:
 
     def query(self, query, parameters=None):
         with self.driver.session() as session:
-            return session.run(query, parameters)
+            return session.run(query, parameters).data()
 
     def close(self):
         self.driver.close()
