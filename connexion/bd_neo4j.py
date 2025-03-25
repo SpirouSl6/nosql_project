@@ -46,8 +46,26 @@ def relation_a_joue(actor_name, film_id):
     """
     parameters = {"name": actor_name.strip(), "id": film_id}
     conn.query(query, parameters)
+      
             
-            
+# Création du nœud acteur et relation avec le film
+def add_actor_me():
+    noeud_actor("Sarah Rialland Tardy")
+    film = db.films.find_one({"title": "Guardians of the Galaxy"})
+    # Relier "Sarah Rialland Tardy" au film "Guardians of the Galaxy"
+    relation_a_joue("Sarah Rialland Tardy", film["_id"])
+    print("Nœud créé")
+
+
+# Fonction pour insérer les acteurs
+def noeud_director(director_name):
+    query = """
+    MERGE (a:Realisateur {name: $name})
+    """
+    parameters = {"name": director_name.strip()}
+    conn.query(query, parameters)
+    
+                
 def importation():
     # Insérer les films depuis MongoDB vers Neo4j
     for film in db.films.find({}, {"_id": 1, "title": 1, "year": 1, 
@@ -68,6 +86,14 @@ def importation():
         relation_a_joue(actor_name, film_id)  # Création de la relation
     print("Importation des acteurs et relations terminée !")
     print("Création des relations 'A joué' terminée !")
+    
+    add_actor_me()
+    
+    # Insérer les films depuis MongoDB vers Neo4j
+    for director in db.films.find({}, {"_id": 0, "Director": 1}):
+        if director.get("Director"):
+            noeud_director(director["Director"])
+    print("Importation des directors terminée !")
 
 
 importation()
