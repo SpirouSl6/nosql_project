@@ -96,7 +96,7 @@ def q9(db):
         {"$group": {"_id": "$decade", "title": {"$push": {"title": "$title", "rating": "$rating"}}}},
         {"$project": {"decade": "$_id", "title": {"$slice": ["$title", 3]}}}
     ]
-    return list(db.films.aggregate(pipeline))
+    return list(db.films.aggregate(pipeline))[0]
 
 
 def q10(db):
@@ -108,7 +108,7 @@ def q10(db):
         {"$group": {"_id": "$genres", "max_runtime": {"$max": "$runtime"}, "longest_movie": {"$first": "$title"}}},
         {"$sort": {"max_runtime": -1}}
     ]
-    return list(db.films.aggregate(pipeline))
+    return list(db.films.aggregate(pipeline))[0]
 
 
 
