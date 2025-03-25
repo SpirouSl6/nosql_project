@@ -76,7 +76,7 @@ if correlation is not None:
     else:
         st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
 else:
-    st.write("Pas de données suffisantes pour le calcul.")
+    st.write("Erreur dans le calcul de la corrélation.")
 st.write("---")  
 
 

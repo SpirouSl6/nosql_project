@@ -129,8 +129,19 @@ def q11(db):
 
 def q12(db):
     movies = list(db.films.find({}, {"Runtime (Minutes)": 1, "Revenue (Millions)": 1, "_id": 0}))
+    if len(movies) == 0:
+        print("Aucun film trouvé avec les champs 'runtime' et 'revenue'.")
+        return None, None
     df = pd.DataFrame(movies)
+    # Vérification que les colonnes 'runtime' et 'revenue' existent dans le DataFrame
+    if 'runtime' not in df.columns or 'revenue' not in df.columns:
+        print("Les colonnes 'runtime' ou 'revenue' sont manquantes dans les données.")
+        return None, None
     df.dropna(subset=["runtime", "revenue"], inplace=True)
+    # Calcul de la corrélation entre 'runtime' et 'revenue'
+    if len(df) == 0:
+        print("Aucune donnée valide pour le calcul de la corrélation.")
+        return None, None
     correlation, p_value = stats.pearsonr(df["Runtime (Minutes)"], df["Revenue (Millions)"])
     return correlation, p_value
 
