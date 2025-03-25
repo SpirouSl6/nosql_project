@@ -20,10 +20,10 @@ def q2(db):
 
 def q3(db):
     pipeline = [
-        {"$match": {"year": 2007, "rating": {"$exists": True, "$ne": None}}},
-        {"$group": {"_id": 0, "avg_rating": {"$avg": "$rating"}}}]
+        {"$match": {"year": 2007, "Votes": {"$exists": True, "$ne": None}}},
+        {"$group": {"_id": 0, "avg_votes": {"$avg": "$Votes"}}}]
     result = list(db.films.aggregate(pipeline))
-    return result[0]["avg_rating"]
+    return result[0]["avg_votes"]
 
 
 def q4(db):
