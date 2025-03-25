@@ -129,32 +129,12 @@ def q11(db):
 
 def q12(db):
     movies = list(db.films.aggregate([{"$match": {"Runtime (Minutes)": {"$exists": True, "$ne": None}}}, {"$project": {"Runtime (Minutes)": 1, "Revenue (Millions)": 1, "_id": 0}}]))
-    # Vérifier si des films ont été trouvés
-    if len(movies) == 0:
-        print("Aucun film trouvé avec les champs 'Runtime (Minutes)' et 'Revenue (Millions)'.")
-        return None, None
-
     # Créer le DataFrame
     df = pd.DataFrame(movies)
-    print("Colonnes dans le DataFrame :", df.columns)
-    
-    print("Extrait des données :")
-    print(df.head())
-    print("Types des colonnes :")
-    print(df.dtypes)
-
-    if 'Runtime (Minutes)' not in df.columns or 'Revenue (Millions)' not in df.columns:
-        print("Les colonnes 'Runtime (Minutes)' ou 'Revenue (Millions)' sont manquantes dans les données.")
-        return None, None
-
     # Convertir la colonne 'Revenue (Millions)' en float
     df['Revenue (Millions)'] = pd.to_numeric(df['Revenue (Millions)'], errors='coerce')
     df.dropna(subset=["Runtime (Minutes)", "Revenue (Millions)"], inplace=True)
-    if len(df) == 0:
-        print("Aucune donnée valide pour le calcul de la corrélation.")
-        return None, None
     correlation, p_value = stats.pearsonr(df["Runtime (Minutes)"], df["Revenue (Millions)"])
-    
     return correlation, p_value
 
 def q13(db):
@@ -164,5 +144,5 @@ def q13(db):
         {"$group": {"_id": "$decade", "avg_runtime": {"$avg": "$runtime"}}},
         {"$sort": {"_id": 1}}
     ]
-    return list(db.films.aggregate(pipeline))[0]
+    return list(db.films.aggregate(pipeline))
 
