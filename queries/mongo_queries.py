@@ -128,7 +128,7 @@ def q11(db):
     
 
 def q12(db):
-    movies = list(db.films.find({}, {"Runtime (Minutes)": 1, "Revenue (Millions)": 1, "_id": 0}))
+    movies = list(db.films.aggregate([{"$match": {"Runtime (Minutes)": {"$exists": True, "$ne": None}}}, {"$project": {"Runtime (Minutes)": 1, "Revenue (Millions)": 1, "_id": 0}}]))
     # Vérifier si des films ont été trouvés
     if len(movies) == 0:
         print("Aucun film trouvé avec les champs 'Runtime (Minutes)' et 'Revenue (Millions)'.")
