@@ -29,8 +29,8 @@ st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}
 
 st.write("### Les 3 films les mieux notés pour chaque décennie :")
 for i in range (len(q9(db))):
-    decade = q9(db)["decade"]
-    movies = q9(db)["title"]
+    decade = q9(db)['decade']
+    movies = q9(db)['title']
 
     st.write(f"#### {decade}s")  # Affichage de la décennie en titre
     for movie in movies:
@@ -40,9 +40,9 @@ for i in range (len(q9(db))):
 
 st.write("### Films les plus longs par genre")
 for i in range (len(q10(db))):
-    genre = q10(db)["_id"]
-    title = q10(db)["longest_movie"]
-    runtime = q10(db)["max_runtime"]
+    genre = q10(db)['_id']
+    title = q10(db)['longest_movie']
+    runtime = q10(db)['max_runtime']
     st.write(f"- **{genre}** : {title} (**{runtime} min**)")
         
         
