@@ -1,4 +1,4 @@
-from neo4j_co import Neo4jConnection
+from connexion.neo4j_co import Neo4jConnection
 import networkx as nx
 import community as community_louvain
 import pandas as pd
