@@ -1,8 +1,4 @@
 from connexion.neo4j_co import Neo4jConnection
-import networkx as nx
-import community as community_louvain
-import pandas as pd
-import matplotlib.pyplot as plt
 
 # Récupérer et afficher les films dans Neo4j
 conn = Neo4jConnection()
