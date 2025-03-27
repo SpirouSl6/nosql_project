@@ -1,5 +1,5 @@
 from neo4j import GraphDatabase
-import connexion.config as config
+import config as config
 from dotenv import load_dotenv
 
 load_dotenv()
