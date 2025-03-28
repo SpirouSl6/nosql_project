@@ -32,21 +32,23 @@ st.write("---")
 st.write(f"Le réalisateur {q20()['d.name']}  a travaillé avec le plus grand nombre d'acteurs distincts : {q20()['NombreActeurs']} acteurs.")
 st.write("---")
 
-st.write(f"Les films les plus 'connectés', c'est-`a-dire ceux qui ont le plus d'acteurs en commun avec d'autres films sont : {q21()}")
+film_list = "\n".join([f"{film['f1.title']} avec {film['NombreFilmsConnectes']} films connectés" for film in q21()])
+st.write(f"Les films les plus 'connectés', c'est-à-dire ceux qui ont le plus d'acteurs en commun avec d'autres films sont : \n{film_list}")
 st.write("---")
 
-st.write(f"Les 5 acteurs ayant joué avec le plus de réalisateurs différents sont : {q22()}")
+acteur_list = "\n".join([f"{acteur['a.name']} avec {acteur['NombreRealisateurs']} réalisateurs différents" for acteur in q22()])
+st.write(f"Les 5 acteurs ayant joué avec le plus de réalisateurs différents sont : \n{acteur_list}")
 st.write("---")
 
-st.write(f"Films recommandés à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué : {q23()}")
+st.write(f"Films recommandés à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué :{q23()['f2.title']} ({q23()['f2.genre']})")
 st.write("---")
 
-st.write(f"Nombre de relations d'influence : {q24_1()}")
+st.write(f"Nombre de relations d'influence : {q24_1()['count(r)']}")
 
-st.write(f"Réalisateurs influencés Kenneth Lonergan : {q24_2()}")
+st.write(f"Réalisateurs influencés Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
 st.write("---")
 
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25()}")
+st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25()['p']}")
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")

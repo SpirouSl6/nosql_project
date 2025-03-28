@@ -57,14 +57,14 @@ def q21():
                         RETURN f1.title, NombreFilmsConnectes
                         ORDER BY NombreFilmsConnectes DESC
                         LIMIT 5;""") 
-    return result[0]
+    return result
 
 def q22():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_REALISE]-(d:Realisateur)
                         RETURN a.name, COUNT(DISTINCT d) AS NombreRealisateurs
                         ORDER BY NombreRealisateurs DESC
                         LIMIT 5;""") 
-    return result[0]
+    return result
 
 def q23():
     result = conn.query("""MATCH (a:Actors {name: "Chris Pratt"})-[:A_JOUE]->(f:Films)
