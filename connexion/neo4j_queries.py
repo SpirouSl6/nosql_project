@@ -85,7 +85,7 @@ def q24_1():
 def q24_2():
     result = conn.query("""MATCH (d1:Realisateur)-[:INFLUENCE_PAR]->(d2:Realisateur {name: "Kenneth Lonergan"})
                         RETURN d1.name;""") 
-    return result[0]
+    return result
 
 
 def q25():
