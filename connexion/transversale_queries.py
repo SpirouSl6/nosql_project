@@ -14,5 +14,5 @@ def q28(actor_name):
     RETURN DISTINCT f2.title AS RecommendedFilm, f2.genre AS Genre
     LIMIT 5
     """, {"actor_name": actor_name})
-    return [f"{row['RecommendedFilm']} ({row['Genre']})" for row in result]
+    return [f"{row['RecommendedFilm']}" for row in result]
 

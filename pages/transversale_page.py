@@ -10,7 +10,8 @@ acteurs = ["Chris Pratt", "Scarlett Johansson", "Robert Downey Jr.", "Ben Afflec
 
 # Créer un menu déroulant (dropdown) pour choisir un acteur
 actor_name = st.selectbox("Choisissez un acteur que vous aimez", acteurs)
-st.write(f"Voici des films recommandés en fonction de l'acteur choisi : {q28(actor_name)}")
+st.write("### Voici des films recommandés en fonction de l'acteur choisi :")
+st.markdown("\n".join(q28(actor_name)))
 
 
 
