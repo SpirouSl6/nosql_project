@@ -55,14 +55,18 @@ if chemin_details:
     G = nx.Graph()
 
     # Ajouter les noeuds pour les acteurs et films du chemin
-    for node in chemin_details.nodes:
-        G.add_node(node['name'], label=node['name'])
-        # Ajouter une relation entre les acteurs et les films
-        if 'Films' in node.labels:
-            G.add_edge(node['name'], node['title'])  # Relation acteur -> film
+    for path in chemin_details['p']:
+        if 'Actors' in path.labels:  # Vérifier si c'est un acteur
+            G.add_node(path['name'], label='Actor')
+        elif 'Films' in path.labels:  # Vérifier si c'est un film
+            G.add_node(path['title'], label='Film')
+        
+        # Ajouter les relations entre les acteurs et les films
+        if 'Actors' in path.labels and 'Films' in path.labels:
+            G.add_edge(path['name'], path['title'])  # Ajouter une arête entre acteur et film
 
-    # Affichage du graphe
-    st.graphviz_chart(nx.nx_pydot.to_pydot(G).to_string())
+    # Afficher ou visualiser le graphe (si nécessaire)
+    st.write(f"Graph des films et acteurs : {G.nodes()}")  # Afficher les nœuds du graphe, ou utilisez une méthode pour visualiser le graphe.
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")
