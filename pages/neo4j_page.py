@@ -45,7 +45,7 @@ st.write("---")
 
 st.write(f"Nombre de relations d'influence : {q24_1()['count(r)']}")
 
-st.write(f"Réalisateurs influencés Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
+st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
 st.write("---")
 
 st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25()['p']}")
