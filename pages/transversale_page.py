@@ -1,16 +1,8 @@
 import streamlit as st
-from connexion.mongo_queries import *
 from connexion.transversale_queries import *
-import networkx as nx
-import community as community_louvain
-import pandas as pd
-import matplotlib.pyplot as plt
-import io
 
 
-
-
-st.write(f"Films avec des genres en commun mais des réalisateurs différents : {q27()}")
+#st.write(f"Films avec des genres en commun mais des réalisateurs différents : {q27()}")
 
 
 # Liste des acteurs
