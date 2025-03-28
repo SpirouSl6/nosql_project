@@ -113,7 +113,8 @@ def q26():
         
         # Créer une liste de couleurs pour les nœuds de ce sous-graphe
         node_colors = [partition[actor] for actor in subgraph.nodes()]
-
+        pos = nx.spring_layout(subgraph)
+        
         # Visualiser le sous-graphe
         fig, ax = plt.subplots(figsize=(4, 4))  
         nx.draw_networkx_nodes(subgraph, pos, node_size=30, cmap=plt.cm.jet, node_color=node_colors, ax=ax)
