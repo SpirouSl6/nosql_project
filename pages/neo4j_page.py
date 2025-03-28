@@ -48,7 +48,21 @@ st.write(f"Nombre de relations d'influence : {q24_1()['count(r)']}")
 st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
 st.write("---")
 
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25().get('p')}")
+st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : ")
+chemin_details = q25()[0].get('p')
+if chemin_details:
+    # Créer un graphe
+    G = nx.Graph()
+
+    # Ajouter les noeuds pour les acteurs et films du chemin
+    for node in chemin_details.nodes:
+        G.add_node(node['name'], label=node['name'])
+        # Ajouter une relation entre les acteurs et les films
+        if 'Films' in node.labels:
+            G.add_edge(node['name'], node['title'])  # Relation acteur -> film
+
+    # Affichage du graphe
+    st.graphviz_chart(nx.nx_pydot.to_pydot(G).to_string())
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")
