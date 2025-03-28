@@ -49,21 +49,23 @@ st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r
 st.write("---")
 
 st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : ")
-chemin_details = q25().get('p')
-if chemin_details:
+
+if q25():
     # Créer un graphe
     G = nx.Graph()
 
     # Ajouter les noeuds pour les acteurs et films du chemin
-    for path in chemin_details['p']:
-        if 'Actors' in path.labels:  # Vérifier si c'est un acteur
-            G.add_node(path['name'], label='Actor')
-        elif 'Films' in path.labels:  # Vérifier si c'est un film
-            G.add_node(path['title'], label='Film')
-        
-        # Ajouter les relations entre les acteurs et les films
-        if 'Actors' in path.labels and 'Films' in path.labels:
-            G.add_edge(path['name'], path['title'])  # Ajouter une arête entre acteur et film
+    for path in q25():
+        if 'p' in path:
+            for node in path['p']:  # Parcourir les nœuds du chemin
+                if 'Actors' in node.labels:  # Si c'est un acteur
+                    G.add_node(node['name'], label='Actor')
+                elif 'Films' in node.labels:  # Si c'est un film
+                    G.add_node(node['title'], label='Film')
+
+                # Ajouter une relation entre un acteur et un film
+                if 'Actors' in node.labels and 'Films' in node.labels:
+                    G.add_edge(node['name'], node['title'])  # Créer une arête entre acteur et film
 
     # Afficher ou visualiser le graphe (si nécessaire)
     st.write(f"Graph des films et acteurs : {G.nodes()}")  # Afficher les nœuds du graphe, ou utilisez une méthode pour visualiser le graphe.
