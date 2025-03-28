@@ -48,7 +48,7 @@ st.write(f"Nombre de relations d'influence : {q24_1()['count(r)']}")
 st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
 st.write("---")
 
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25()['p']}")
+st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25().get('p')}")
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")
@@ -90,13 +90,6 @@ def q26():
             communities[community_id] = []
         communities[community_id].append(actor)
 
-    # Afficher les communautés d'acteurs
-    community_results = {}
-    for community_id, actors in communities.items():
-        community_results[community_id] = actors
-    
-    st.write("Communautés d'acteurs identifiées :")
-    st.write(community_results)
 
     # Créer et afficher un graphe pour chaque communauté
     community_plots = []
