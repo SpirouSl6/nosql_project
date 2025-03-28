@@ -17,9 +17,7 @@ actors = [actor['a.name'] for actor in q15()]
 st.write(f"Les acteurs ayant joué dans les films où l'actrice Anne Hathaway a également joué sont : {', '.join(actors)}.")
 st.write("---")
 
-st.write(f"L'acteur {q16_1()['a.name']} a joué dans des films totalisant le plus de revenus avec {q16_1()['TotalRevenue']} euros de revenus pour un film.")
-
-st.write(f"L'acteur : {q16_2()['a.name']} a joué dans des films totalisant le plus de revenus avec {q16_2()['TotalRevenue']} euros de revenus pour tous les films.")
+st.write(f"L'acteur : {q16()['a.name']} a joué dans des films totalisant le plus de revenus avec {q16_2()['TotalRevenue']} euros de revenus pour tous les films.")
 st.write("---")
 
 st.write(f"La moyenne des votes sur tous les films est de {q17()}")
@@ -28,7 +26,7 @@ st.write("---")
 st.write(f"Le genre le plus représenté dans la base de données est {q18()['genre']} avec {q18()['genre_count']} films.")
 st.write("---")
 
-st.write(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans : {q19()}")
+st.write(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans : {q19()['fo.title']}")
 st.write("---")
 
 st.write(f"Le réalisateur {q20()['d.name']}  a travaillé avec le plus grand nombre d'acteurs distincts : {q20()['NombreActeurs']} acteurs.")

@@ -15,14 +15,8 @@ def q15():
                         RETURN a.name""") 
     return result
 
-def q16_1():
-    result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films) 
-                        RETURN a.name, f.revenue AS TotalRevenue 
-                        ORDER BY TotalRevenue DESC 
-                        LIMIT 1""") 
-    return result[0]
 
-def q16_2():
+def q16():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films) 
                         WITH a, SUM(COALESCE(toFloat(f.revenue), 0)) AS TotalRevenue 
                         RETURN a.name, TotalRevenue 
@@ -33,7 +27,7 @@ def q16_2():
 def q17():
     result = conn.query("""MATCH (f:Films) 
                         RETURN AVG(f.votes)""") 
-    return result
+    return result[0]['AVG(f.votes)']
 
 def q18():
     result = conn.query("""MATCH (f:Films) 
@@ -41,20 +35,20 @@ def q18():
                         RETURN genre, COUNT(*) AS genre_count 
                         ORDER BY genre_count DESC 
                         LIMIT 1""") 
-    return result
+    return result[0]
 
 def q19():
     result = conn.query("""MATCH (a:Actors {name: 'Sarah Rialland Tardy'})-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(other:Actors)-[:A_JOUE]->(fo:Films) 
                         WHERE other.name <> a 
                         RETURN fo.title""") 
-    return result
+    return result[0]
 
 def q20():
     result = conn.query("""MATCH (d:Realisateur)-[:A_REALISE]->(f:Films)<-[:A_JOUE]-(a:Actors)
                         RETURN d.name, COUNT(DISTINCT a) AS NombreActeurs
                         ORDER BY NombreActeurs DESC
                         LIMIT 1;""") 
-    return result
+    return result[0]
 
 def q21():
     result = conn.query("""MATCH (f1:Films)<-[:A_JOUE]-(a:Actors)-[:A_JOUE]->(f2:Films)
@@ -63,14 +57,14 @@ def q21():
                         RETURN f1.title, NombreFilmsConnectes
                         ORDER BY NombreFilmsConnectes DESC
                         LIMIT 5;""") 
-    return result
+    return result[0]
 
 def q22():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_REALISE]-(d:Realisateur)
                         RETURN a.name, COUNT(DISTINCT d) AS NombreRealisateurs
                         ORDER BY NombreRealisateurs DESC
                         LIMIT 5;""") 
-    return result
+    return result[0]
 
 def q23():
     result = conn.query("""MATCH (a:Actors {name: "Chris Pratt"})-[:A_JOUE]->(f:Films)
@@ -81,23 +75,23 @@ def q23():
                         AND NOT EXISTS { MATCH (a)-[:A_JOUE]->(f2) }  
                         RETURN f2.title, f2.genre
                         LIMIT 1;""") 
-    return result
+    return result[0]
 
 def q24_1():
     result = conn.query("""MATCH ()-[r:INFLUENCE_PAR]->()
                         RETURN count(r);""") 
-    return result
+    return result[0]
 
 def q24_2():
     result = conn.query("""MATCH (d1:Realisateur)-[:INFLUENCE_PAR]->(d2:Realisateur {name: "Kenneth Lonergan"})
                         RETURN d1.name;""") 
-    return result
+    return result[0]
 
 
 def q25():
     result = conn.query("""MATCH p = shortestPath((a1:Actors {name: "Daniel Giménez Cacho"})-[*..10]-(a2:Actors {name: "Scarlett Johansson"}))
                         RETURN p;""") 
-    return result
+    return result[0]
 
 
 # Fermer la connexion
