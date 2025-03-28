@@ -20,7 +20,7 @@ def q16_1():
                         RETURN a.name, f.revenue AS TotalRevenue 
                         ORDER BY TotalRevenue DESC 
                         LIMIT 1""") 
-    return result
+    return result[0]
 
 def q16_2():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films) 
@@ -28,7 +28,7 @@ def q16_2():
                         RETURN a.name, TotalRevenue 
                         ORDER BY TotalRevenue DESC 
                         LIMIT 1""") 
-    return result
+    return result[0]
 
 def q17():
     result = conn.query("""MATCH (f:Films) 
