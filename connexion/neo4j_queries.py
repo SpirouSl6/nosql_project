@@ -11,7 +11,7 @@ def q14():
     return result[0]
 
 def q15():
-    result = conn.query(""""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(ah:Actors {name: 'Anne Hathaway'}) 
+    result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(ah:Actors {name: 'Anne Hathaway'}) 
                         RETURN a.name""") 
     return result
 
