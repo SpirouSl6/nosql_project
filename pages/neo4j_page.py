@@ -56,19 +56,20 @@ if q25():
 
     # Ajouter les noeuds pour les acteurs et films du chemin
     for path in q25():
-        if 'p' in path:
+        if isinstance(path, dict) and 'p' in path:
             for node in path['p']:  # Parcourir les nœuds du chemin
-                if 'Actors' in node.labels:  # Si c'est un acteur
-                    G.add_node(node['name'], label='Actor')
-                elif 'Films' in node.labels:  # Si c'est un film
-                    G.add_node(node['title'], label='Film')
+                if isinstance(node, dict):  # Vérifier que le noeud est un dictionnaire
+                    if 'Actors' in node.get('labels', []):  # Si c'est un acteur
+                        G.add_node(node['name'], label='Actor')
+                    elif 'Films' in node.get('labels', []):  # Si c'est un film
+                        G.add_node(node['title'], label='Film')
 
-                # Ajouter une relation entre un acteur et un film
-                if 'Actors' in node.labels and 'Films' in node.labels:
-                    G.add_edge(node['name'], node['title'])  # Créer une arête entre acteur et film
+                    # Ajouter une relation entre un acteur et un film
+                    if 'Actors' in node.get('labels', []) and 'Films' in node.get('labels', []):
+                        G.add_edge(node['name'], node['title'])  # Créer une arête entre acteur et film
 
     # Afficher ou visualiser le graphe (si nécessaire)
-    st.write(f"Graph des films et acteurs : {G.nodes()}")  # Afficher les nœuds du graphe, ou utilisez une méthode pour visualiser le graphe.
+    st.write(f"Graph des films et acteurs : {list(G.nodes)}")  # Afficher les nœuds du graphe
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")
