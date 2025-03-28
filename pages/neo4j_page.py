@@ -49,7 +49,7 @@ st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r
 st.write("---")
 
 st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : ")
-chemin_details = q25()[0].get('p')
+chemin_details = q25().get('p')
 if chemin_details:
     # Créer un graphe
     G = nx.Graph()
