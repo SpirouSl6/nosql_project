@@ -49,28 +49,23 @@ st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r
 st.write("---")
 
 st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25().get('p')}")
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : ")
+# Initialisation des variables pour les acteurs et films
+acteurs = []
+films = []
 
-if q25():
-    # Créer un graphe
-    G = nx.Graph()
+# Parcourir les éléments du chemin pour extraire les acteurs et films
+for element in q25()['p']:
+    if 'name' in element:  # Si c'est un acteur
+        acteurs.append(element['name'])
+    elif 'title' in element:  # Si c'est un film
+        films.append(element['title'])
 
-    # Ajouter les noeuds pour les acteurs et films du chemin
-    for path in q25():
-        if isinstance(path, dict) and 'p' in path:
-            for node in path['p']:  # Parcourir les nœuds du chemin
-                if isinstance(node, dict):  # Vérifier que le noeud est un dictionnaire
-                    if 'Actors' in node.get('labels', []):  # Si c'est un acteur
-                        G.add_node(node['name'], label='Actor')
-                    elif 'Films' in node.get('labels', []):  # Si c'est un film
-                        G.add_node(node['title'], label='Film')
+# Créer une chaîne de caractères qui décrit le chemin
+chemin_str = " → ".join([f"{acteurs[i]} → {films[i]} → {acteurs[i+1]}" for i in range(len(acteurs)-1)])
 
-                    # Ajouter une relation entre un acteur et un film
-                    if 'Actors' in node.get('labels', []) and 'Films' in node.get('labels', []):
-                        G.add_edge(node['name'], node['title'])  # Créer une arête entre acteur et film
+# Afficher le chemin
+st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {chemin_str}")
 
-    # Afficher ou visualiser le graphe (si nécessaire)
-    st.write(f"Graph des films et acteurs : {list(G.nodes)}")  # Afficher les nœuds du graphe
 st.write("---")
 
 st.subheader("Communautés d'acteurs selon Louvain")
