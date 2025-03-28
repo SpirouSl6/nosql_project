@@ -134,7 +134,7 @@ def q26():
     # Afficher les graphiques des communautés dans Streamlit
     for idx, plot in enumerate(community_plots):
         with cols[idx % 2]:  # Alterner entre les colonnes
-            st.image(plot, use_column_width=True)
+            st.image(plot, use_container_width=True)
 
 # Exécution de q26
 q26()
