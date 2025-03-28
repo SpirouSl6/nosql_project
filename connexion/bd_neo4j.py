@@ -100,12 +100,11 @@ def importation():
     
     # Insérer les films depuis MongoDB vers Neo4j
     for actor in db.films.aggregate([
-            {"$project": {"_id": 1, "title": 1, "year": 1, "Votes": 1, "Revenue (Millions)": 1, "rating": 1, "Director": 1, "genre": 1, "Actors": { "$split": ["$Actors", ", "]}}}, 
+            {"$project": {"_id": 1, "title": 1, "year": 1, "Votes": 1, "Revenue (Millions)": 1, "rating": 1, "Director": 1, "genre": 1, "Actors": { "$split": [{"$replaceAll": {"input": "$Actors", "find" : ", ", "replacement": ","}},","]}}}, 
             {"$unwind": "$Actors"}, 
             {"$set": {"Actors": { "$trim": { "input": "$Actors"}}}}]):
         actor_name = actor["Actors"]
         film_id = actor["_id"]
-        director_name = actor["Director"]
 
         noeud_actor(actor_name)  # Création du nœud acteur
         relation_a_joue(actor_name, film_id)  # Création de la relation
