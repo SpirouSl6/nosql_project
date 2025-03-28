@@ -48,7 +48,7 @@ st.write(f"Nombre de relations d'influence : {q24_1()['count(r)']}")
 st.write(f"Réalisateurs influencés par Kenneth Lonergan : {[r['d1.name'] for r in q24_2()]}")
 st.write("---")
 
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {q25().get('p')}")
+
 # Initialisation des variables pour les acteurs et films
 acteurs = []
 films = []
@@ -62,14 +62,11 @@ for element in q25()['p']:
 
 # Créer une chaîne de caractères qui décrit le chemin
 chemin_str = " → ".join([f"{acteurs[i]} → {films[i]} → {acteurs[i+1]}" for i in range(len(acteurs)-1)])
-
-# Afficher le chemin
 st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {chemin_str}")
-
 st.write("---")
 
-st.subheader("Communautés d'acteurs selon Louvain")
-
+#st.subheader("Communautés d'acteurs selon Louvain")
+st.write("Toutes les communautés d'acteurs selon Louvain")
 def q26():
     data = pd.read_csv('q26.csv')
 
@@ -107,7 +104,7 @@ def q26():
             communities[community_id] = []
         communities[community_id].append(actor)
 
-
+    st.write("Chaque communauté d'acteurs selon Louvain")
     # Créer et afficher un graphe pour chaque communauté
     community_plots = []
     for community_id, actors in communities.items():
