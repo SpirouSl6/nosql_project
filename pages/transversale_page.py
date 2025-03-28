@@ -9,8 +9,8 @@ from connexion.transversale_queries import *
 acteurs = ["Chris Pratt", "Scarlett Johansson", "Robert Downey Jr.", "Ben Affleck", "Jane Levy", "Robert Pattinson"]
 
 # Créer un menu déroulant (dropdown) pour choisir un acteur
-actor_name = st.selectbox("Choisissez un acteur", acteurs)
-st.write(f"Films recommandés à {actor_name} en fonction de ses genres préférés : {q28(actor_name)}")
+actor_name = st.selectbox("Choisissez un acteur que vous aimez", acteurs)
+st.write(f"Voici des films recommandés en fonction de l'acteur choisi : {q28(actor_name)}")
 
 
 
