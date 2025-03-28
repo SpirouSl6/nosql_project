@@ -17,7 +17,7 @@ actors = [actor['a.name'] for actor in q15()]
 st.write(f"Les acteurs ayant joué dans les films où l'actrice Anne Hathaway a également joué sont : {', '.join(actors)}.")
 st.write("---")
 
-st.write(f"L'acteur : {q16()['a.name']} a joué dans des films totalisant le plus de revenus avec {q16_2()['TotalRevenue']} euros de revenus pour tous les films.")
+st.write(f"L'acteur : {q16()['a.name']} a joué dans des films totalisant le plus de revenus avec {q16()['TotalRevenue']} euros de revenus pour tous les films.")
 st.write("---")
 
 st.write(f"La moyenne des votes sur tous les films est de {q17()}")
