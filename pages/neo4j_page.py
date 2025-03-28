@@ -115,23 +115,25 @@ def q26():
         node_colors = [partition[actor] for actor in subgraph.nodes()]
 
         # Visualiser le sous-graphe
-        pos = nx.spring_layout(subgraph)
-        plt.figure(figsize=(8, 8))
-        nx.draw_networkx_nodes(subgraph, pos, node_size=50, cmap=plt.cm.jet, node_color=node_colors)
-        nx.draw_networkx_edges(subgraph, pos, alpha=0.5)
-        nx.draw_networkx_labels(subgraph, pos, font_size=6)
-        plt.title(f"Communauté {community_id} d'acteurs")
-        
+        fig, ax = plt.subplots(figsize=(4, 4))  
+        nx.draw_networkx_nodes(subgraph, pos, node_size=30, cmap=plt.cm.jet, node_color=node_colors, ax=ax)
+        nx.draw_networkx_edges(subgraph, pos, alpha=0.5, ax=ax)
+        nx.draw_networkx_labels(subgraph, pos, font_size=5, ax=ax)
+        ax.set_title(f"Communauté {community_id}", fontsize=10)
+            
         # Sauvegarder l'image dans un buffer
         buf = io.BytesIO()
-        plt.savefig(buf, format='png')
+        plt.savefig(buf, format='png', bbox_inches='tight')
         buf.seek(0)
         community_plots.append(buf)
+        
+        plt.close(fig)
 
+    cols = st.columns(2)
     # Afficher les graphiques des communautés dans Streamlit
     for idx, plot in enumerate(community_plots):
-        st.image(plot)
-    plt.close()
+        with cols[idx % 2]:  # Alterner entre les colonnes
+            st.image(plot, use_column_width=True)
 
 # Exécution de q26
 q26()
