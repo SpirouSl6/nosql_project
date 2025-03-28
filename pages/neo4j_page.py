@@ -10,7 +10,7 @@ import io
 st.title("NoSQL Databases - Projet")
 st.header("Résultats Neo4j requêtes")
 
-st.write(f"L'acteur ayant joué dans le plus grand nombre de films est {q14()}")
+st.write(f"L'acteur ayant joué dans le plus grand nombre de films est {q14()['a.name']} avec {q14()['FilmCount']} films.")
 st.write("---")
 
 st.write(f"Les acteurs ayant joué dans les films où l'actrice Anne Hathaway a également joué sont : {q15()}")

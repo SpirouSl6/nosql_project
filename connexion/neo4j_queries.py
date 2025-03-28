@@ -8,7 +8,7 @@ def q14():
                         RETURN a.name, COUNT(f) AS FilmCount 
                         ORDER BY FilmCount DESC 
                         LIMIT 1""") 
-    return result
+    return result[0]
 
 def q15():
     result = conn.query(""""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(ah:Actors {name: 'Anne Hathaway'}) 
