@@ -53,7 +53,7 @@ for row in q30():
     st.write(f"**Collaboration entre {realisateur} et {acteur}** :")
     st.write(f"**Nombre de collaborations** : {collaboration_count}")
     st.write(f"**Liste des notes des films** : {ratings}")
-    st.write(f"**Revenu total des films** : ${total_revenue:,.2f}")
+    st.write(f"**Revenu total des films** : {total_revenue:,.2f}€")
     st.write("---")
 
 
