@@ -68,7 +68,12 @@ st.write("---")
 #st.subheader("Communautés d'acteurs selon Louvain")
 st.write("Toutes les communautés d'acteurs selon Louvain")
 def q26():
-    data = pd.read_csv('q26.csv')
+    result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(b:Actors)
+                           WHERE a <> b
+                           RETURN a.name AS Actor1, b.name AS Actor2, COUNT(f) AS CommonFilms""")
+    
+    # Créer un DataFrame à partir des résultats
+    data = pd.DataFrame(result)
 
     # Créer un graphe vide
     G = nx.Graph()

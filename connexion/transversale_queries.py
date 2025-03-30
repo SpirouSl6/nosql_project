@@ -57,3 +57,6 @@ def q30():
                            ORDER BY collaboration_count DESC
                            RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, ratings, total_revenue""")
     return result
+
+# Fermer la connexion Neo4j
+conn.close()
