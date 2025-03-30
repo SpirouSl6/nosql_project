@@ -34,17 +34,17 @@ def q28(actor_name):
 
 def q29():
     result = conn.query("""MATCH (d1:Realisateur)-[:A_REALISE]->(f1:Films)
-                        MATCH (d2:Realisateur)-[:A_REALISE]->(f2:Films)
-                        WHERE f1 <> f2 AND f1.year = f2.year 
-                        WITH f1, f2, d1, d2
-                        UNWIND split(f1.genre, ',') AS genre1
-                        UNWIND split(f2.genre, ',') AS genre
-                        WITH f1, f2, d1, d2, genre1, genre2
-                        WHERE genre1 = genre2  
-                        WITH d1, d2, COLLECT(DISTINCT genre1) AS shared_genres, f1, f2
-                        MERGE (d1)-[:CONCURRENCE]->(d2)
-                        RETURN d1.name AS Realisateur1, d2.name AS Realisateur2, 
-                               f1.title AS Film1, f2.title AS Film2, 
-                               f1.year AS year, shared_genres
-                        LIMIT 10;""") 
+                            MATCH (d2:Realisateur)-[:A_REALISE]->(f2:Films)
+                            WHERE f1 <> f2 AND f1.year = f2.year 
+                            WITH f1, f2, d1, d2
+                            UNWIND split(f1.genre, ',') AS genre1
+                            UNWIND split(f2.genre, ',') AS genre2
+                            WITH f1, f2, d1, d2, genre1, genre2
+                            WHERE genre1 = genre2  
+                            WITH d1, d2, COLLECT(DISTINCT genre1) AS shared_genres, f1, f2
+                            MERGE (d1)-[:CONCURRENCE]->(d2)
+                            RETURN d1.name AS Realisateur1, d2.name AS Realisateur2, 
+                                   f1.title AS Film1, f2.title AS Film2, 
+                                   f1.year AS year, shared_genres
+                            LIMIT 10;""") 
     return result
