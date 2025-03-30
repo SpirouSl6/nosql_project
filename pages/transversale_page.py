@@ -40,6 +40,19 @@ for row in q29():
 
 
 
+st.write("Voici les collaborations les plus fréquentes entre réalisateurs et acteurs avec leurs succès commercial et critique :")
+
+# Affichage sous forme de liste
+for row in q30():
+    realisateur = row['Realisateur']
+    acteur = row['Acteur']
+    collaboration_count = row['collaboration_count']
+    ratings = row['ratings']
+    
+    st.write(f"**Collaboration entre {realisateur} et {acteur}** :")
+    st.write(f"**Nombre de collaborations** : {collaboration_count}")
+    st.write(f"**Liste des notes des films** : {ratings}")
+    st.write("---")
 
 
 

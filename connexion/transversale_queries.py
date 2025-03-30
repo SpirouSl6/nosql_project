@@ -48,3 +48,12 @@ def q29():
                                    f1.year AS year, shared_genres
                             LIMIT 10;""") 
     return result
+
+
+def q30():
+    result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_REALISE]-(r:Realisateur)
+                        WITH r, a, COUNT(f) AS collaboration_count, COLLECT(f.rating) AS ratings
+                        WHERE collaboration_count >= 2
+                        ORDER BY collaboration_count DESC
+                        RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, ratings""") 
+    return result
