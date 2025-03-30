@@ -52,8 +52,8 @@ def q29():
 
 def q30():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_REALISE]-(r:Realisateur)
-                           WITH r, a, COUNT(f) AS collaboration_count, COLLECT(f.rating) AS ratings
+                           WITH r, a, COUNT(f) AS collaboration_count, COLLECT(f.rating) AS ratings, SUM(f.revenue) AS total_revenue
                            WHERE collaboration_count >= 2
                            ORDER BY collaboration_count DESC
-                           RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, ratings""")
+                           RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, ratings, total_revenue""")
     return result

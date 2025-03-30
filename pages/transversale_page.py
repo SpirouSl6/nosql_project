@@ -48,10 +48,12 @@ for row in q30():
     acteur = row['Acteur']
     collaboration_count = row['collaboration_count']
     ratings = row['ratings']
+    total_revenue = row['total_revenue']
     
     st.write(f"**Collaboration entre {realisateur} et {acteur}** :")
     st.write(f"**Nombre de collaborations** : {collaboration_count}")
     st.write(f"**Liste des notes des films** : {ratings}")
+    st.write(f"**Revenu total des films** : ${total_revenue:,.2f}")
     st.write("---")
 
 
