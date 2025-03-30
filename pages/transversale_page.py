@@ -30,9 +30,12 @@ for row in q29():
     film1 = row['Film1']
     film2 = row['Film2']
     year = row['year']
-    st.write(f"Concurrence entre {realisateur1} et {realisateur2} :")
-    st.write(f"Films : {film1} et {film2}")
-    st.write(f"Year : {year}")
+    shared_genres = row['shared_genres']
+
+    st.write(f"**Concurrence entre {realisateur1} et {realisateur2}** :")
+    st.write(f"**Films** : {film1} et {film2}")
+    st.write(f"**Année** : {year}")
+    st.write(f"**Genres partagés** : {', '.join(shared_genres)}")
     st.write("---")
 
 

@@ -43,6 +43,8 @@ def q29():
                         WHERE genre1 = genre2  
                         WITH d1, d2, COLLECT(DISTINCT genre1) AS shared_genres, f1, f2
                         MERGE (d1)-[:CONCURRENCE]->(d2)
-                        RETURN d1.name AS Realisateur1, d2.name AS Realisateur2, f1.title AS Film1, f2.title AS Film2, f1.year AS year, shared_genres
+                        RETURN d1.name AS Realisateur1, d2.name AS Realisateur2, 
+                               f1.title AS Film1, f2.title AS Film2, 
+                               f1.year AS year, shared_genres
                         LIMIT 10;""") 
     return result
