@@ -8,26 +8,33 @@ st.title("NoSQL Databases - Projet")
 st.header("Résultats MongoDB requêtes \n\n")
 
 st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
-st.write("Année avec le plus grand nombre de films sortis : ", q1(db)['_id'],  "avec", q1(db)['count'], "films.")
+st.markdown(f"Année avec le plus grand nombre de films sortis : {q1(db)['_id']} avec {q1(db)['count']} films.")
 st.write("---")
 
-st.write("Nombre de films sortis après 1999 : ", q2(db))
+st.markdown("#### **Q2. Quel est le nombre de films sortis après l'année 1999.**")
+st.markdown(f"Il y a {q2(db)} films sortis après 1999.")
 st.write("---")
 
-st.write("Moyenne des votes des films sortis en 2007 : ", q3(db))
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
+st.markdown(f"La moyenne des votes des films sortis en 2007 est de {q3(db)}.")
 st.write("---")
 
-st.write("Histogramme nombres de films par année : ")
+st.markdown("#### **Q4. Affichez un histogramme qui permet de visualiser le nombres de films par année.**")
+st.write("Histogramme du nombres de films par année : ")
 q4(db)
 st.write("---")
 
-st.write("Les genres de films disponibles dans la bases :", ", ".join(q5(db)))
+st.markdown("#### **Q5. Quelles sont les genres de films disponibles dans la base.**")
+st.write("Les genres de films disponibles dans la bases :")
+st.write("\n".join([f"- {genre}" for genre in q5(db)]))
 st.write("---")
 
+
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("Le film qui a généré le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus.".format(q6(db)["title"], q6(db)["Revenue (Millions)"]))
 st.write("---")
 
-
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 if not q7(db):
     st.write("Il n'y a pas de réalisateurs ayant réalisé plus de 5 films dans la base de données.")
 else:
@@ -35,9 +42,11 @@ else:
     st.write("Les réalisateurs ayant réalisé plus de 5 films dans la base de données :", ", ".join(directors))
 st.write("---")
     
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("Le genre de film qui rapporte en moyenne le plus de revenus est **\"{}\"** avec **{}** millions d'euros de revenus en moyenne.".format(q8(db)["_id"], q8(db)["avg_revenue"]))
 st.write("---")
 
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("### Les 3 films les mieux notés pour chaque décennie :")
 for i in range (len(q9(db))):
     decade = q9(db)['decade']
@@ -48,7 +57,7 @@ for i in range (len(q9(db))):
         st.write(f"- **{movie['title']}** (Note: {movie['rating']})")  # Liste à puces
     st.write("---")    # Séparation
     
-
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("### Films les plus longs par genre")
 for i in q10(db):
     genre = i['_id']
@@ -57,7 +66,7 @@ for i in q10(db):
     st.write(f"- **{genre}** : {title} (**{runtime} min**)")
 st.write("---")        
         
-
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 q11(db)        
 st.write("### Films avec un metascore supérieur à 80 et générant plus de 50 millions de dollars:")
 for film in db.view_q11.find():
@@ -65,8 +74,9 @@ for film in db.view_q11.find():
     st.write(f"Metascore: {film['Metascore']}")
     st.write(f"Revenue: {film['Revenue (Millions)']} millions d'euros")
     st.write("---")  
+ 
    
-
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("### Calcul de la corrélation entre la durée des films et leur revenu")
 correlation, p_value = q12(db)
 st.write(f"**Corrélation (r)** : {correlation:.2f}")
@@ -77,7 +87,7 @@ else:
     st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
 st.write("---")  
 
-
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
 st.write("### Évolution de la durée moyenne des films par décennie")
 for i in q13(db):
     decade = i["_id"]
