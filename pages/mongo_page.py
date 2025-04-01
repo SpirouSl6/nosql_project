@@ -5,7 +5,7 @@ from connexion.mongo_co import get_database
 db = get_database()  # Récupération de la base de données
 
 st.title("NoSQL Databases - Projet")
-st.header("Résultats MongoDB requêtes")
+st.header("Résultats MongoDB requêtes \n\n")
 
 st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
 st.write("Année avec le plus grand nombre de films sortis : ", q1(db)['_id'],  "avec", q1(db)['count'], "films.")
