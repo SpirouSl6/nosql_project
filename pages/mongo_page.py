@@ -7,7 +7,7 @@ db = get_database()  # Récupération de la base de données
 st.title("NoSQL Databases - Projet")
 st.header("Résultats MongoDB requêtes")
 
-st.markdown("<h2 style='font-weight: bold;'>Afficher l’année où le plus grand nombre de films ont été sortis.</h2>", unsafe_allow_html=True)
+st.markdown("### **Afficher l’année où le plus grand nombre de films ont été sortis.**")
 st.write("Année avec le plus grand nombre de films sortis : ", q1(db)['_id'],  "avec", q1(db)['count'], "films.")
 st.write("---")
 
