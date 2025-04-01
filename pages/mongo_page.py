@@ -27,7 +27,7 @@ q4(db)
 st.write("---")
 
 st.markdown("#### **Q5. Quelles sont les genres de films disponibles dans la base ?**")
-st.write("Les genres de films disponibles dans la bases :")
+st.write("Les genres de films disponibles dans la base sont :")
 st.write("\n".join([f"- **{genre}**" for genre in q5(db)]))
 st.write("---")
 
@@ -45,7 +45,7 @@ else:
 st.write("---")
     
 st.markdown("#### **Q8. Quel est le genre de film qui rapporte en moyenne le plus de revenus ?**")
-st.markdown(f"Le genre de film qui rapporte en moyenne le plus de revenus est **\"{q8(db)['_id']}\"** avec **{q8(db)['avg_revenue']}** millions d'euros de revenus en moyenne.")
+st.markdown(f"Le genre de film qui rapporte en moyenne le plus de revenus est **\"{q8(db)['_id']}\"** avec **{round(q8(db)['avg_revenue'], 2)}** millions d'euros de revenus en moyenne.")
 st.write("---")
 
 st.markdown("#### **Q9. Quels sont les 3 films les mieux notés (rating) pour chaque décennie (1990-1999, 2000-2009, etc.) ?**")
@@ -60,7 +60,7 @@ for i in range (len(q9(db))):
     st.write("---")    # Séparation
     
 st.markdown("#### **Q10. Quel est le film le plus long (Runtime) par genre ?**")
-st.write("Le films les plus longs par genre est :")
+st.write("Le films le plus long par genre est :")
 for i in q10(db):
     genre = i['_id']
     title = i['longest_movie']
