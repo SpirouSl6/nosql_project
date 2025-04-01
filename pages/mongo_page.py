@@ -5,17 +5,17 @@ from connexion.mongo_co import get_database
 db = get_database()  # Récupération de la base de données
 
 st.title("NoSQL Databases - Projet")
-st.header("Résultats MongoDB requêtes \n\n")
+st.header("Résultats MongoDB requêtes")
 
-st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
+st.markdown("\n\n#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
 st.markdown(f"L'année avec le plus grand nombre de films sortis est **{q1(db)['_id']}** avec **{q1(db)['count']}** films.")
 st.write("---")
 
-st.markdown("#### **Q2. Quel est le nombre de films sortis après l'année 1999.**")
+st.markdown("#### **Q2. Quel est le nombre de films sortis après l'année 1999 ?**")
 st.markdown(f"Il y a **{q2(db)}** films sortis après 1999.")
 st.write("---")
 
-st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007.**")
+st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007 ?**")
 st.markdown(f"La moyenne des votes des films sortis en 2007 est de **{q3(db)}**.")
 st.write("---")
 
@@ -24,13 +24,13 @@ st.write("Histogramme du nombres de films par année : ")
 q4(db)
 st.write("---")
 
-st.markdown("#### **Q5. Quelles sont les genres de films disponibles dans la base.**")
+st.markdown("#### **Q5. Quelles sont les genres de films disponibles dans la base ?**")
 st.write("Les genres de films disponibles dans la bases :")
 st.write("\n".join([f"- **{genre}**" for genre in q5(db)]))
 st.write("---")
 
 
-st.markdown("#### **Q6. Quel est le film qui a généré le plus de revenus.**")
+st.markdown("#### **Q6. Quel est le film qui a généré le plus de revenus ?**")
 st.markdown(f"Le film qui a généré le plus de revenus est **\"{q6(db)['title']}\"** avec **{q6(db)['Revenue (Millions)']}** millions d'euros de revenus.")
 st.write("---")
 
