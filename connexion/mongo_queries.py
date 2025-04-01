@@ -97,7 +97,7 @@ def q9(db):
         {"$group": {"_id": "$decade", "title": {"$push": {"title": "$title", "rating": "$rating"}}}},
         {"$project": {"decade": "$_id", "title": {"$slice": ["$title", 3]}}}
     ]
-    return list(db.films.aggregate(pipeline))[0]
+    return list(db.films.aggregate(pipeline))
 
 
 def q10(db):
