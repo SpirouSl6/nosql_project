@@ -50,9 +50,9 @@ st.write("---")
 
 st.markdown("#### **Q9. Quels sont les 3 films les mieux notés (rating) pour chaque décennie (1990-1999, 2000-2009, etc.) ?**")
 st.write("Les 3 films les mieux notés pour chaque décennie sont :")
-for i in range (len(q9(db))):
-    decade = q9(db)['decade']
-    movies = q9(db)['title']
+for result in q9(db):
+    decade = result['decade']
+    movies = result['title']
 
     st.write(f"**{decade}s**")  # Affichage de la décennie en titre
     for movie in movies:
