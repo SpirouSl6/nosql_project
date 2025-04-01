@@ -10,7 +10,7 @@ st.write("")  # Ajoute un saut de ligne
 st.write("") 
 
 st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
-st.markdown(f"L'année avec le plus grand nombre de films sortis est en**{q1(db)['_id']}** avec **{q1(db)['count']}** films.")
+st.markdown(f"L'année avec le plus grand nombre de films sortis est en **{q1(db)['_id']}** avec **{q1(db)['count']}** films.")
 st.write("---")
 
 st.markdown("#### **Q2. Quel est le nombre de films sortis après l'année 1999 ?**")

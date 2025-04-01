@@ -1,7 +1,12 @@
 import streamlit as st
 from connexion.transversale_queries import *
 
+st.title("NoSQL Databases - Projet")
+st.header("Questions transversales")
+st.write("")  # Ajoute un saut de ligne
+st.write("")
 
+st.markdown("#### **Q27. Quels sont les films qui ont des genres en commun mais qui ont des réalisateurs différents ?**")
 st.write(f"Films avec des genres en commun mais des réalisateurs différents :")
 for row in q27():
     film1 = row['Film1']
@@ -13,6 +18,7 @@ for row in q27():
     st.write(f"Genres communs : {genres_communs}")
     st.write("---")
 
+st.markdown("#### **Q28. Recommander des films aux utilisateurs en fonction des préférences d’un acteur donné.**")
 # Liste des acteurs
 acteurs = ["Chris Pratt", "Scarlett Johansson", "Robert Downey Jr.", "Ben Affleck", "Jane Levy", "Robert Pattinson"]
 
@@ -21,7 +27,7 @@ actor_name = st.selectbox("Choisissez un acteur que vous aimez", acteurs)
 st.write("Voici des films recommandés en fonction de l'acteur choisi :")
 st.markdown("\n".join(q28(actor_name)))
 
-
+st.markdown("#### **Q29. Créer une relation de “concurrence” entre réalisateurs ayant réalisé des films similaires la même année.**")
 st.write("Voici les relations de concurrence entre réalisateurs ayant réalisé des films similaires la même année :")
 # Affichage sous forme de liste
 for row in q29():
@@ -39,7 +45,7 @@ for row in q29():
     st.write("---")
 
 
-
+st.markdown("#### **Q30. Identifier les collaborations les plus fréquentes entre réalisateurs et acteurs, puis analyser si ces collaborations sont associées à un succès commercial ou critique.**")
 st.write("Voici les collaborations les plus fréquentes entre réalisateurs et acteurs avec leurs succès commercial et critique :")
 
 # Affichage sous forme de liste
