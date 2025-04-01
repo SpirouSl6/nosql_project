@@ -10,7 +10,7 @@ st.write("")  # Ajoute un saut de ligne
 st.write("") 
 
 st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
-st.markdown(f"L'année avec le plus grand nombre de films sortis est **{q1(db)['_id']}** avec **{q1(db)['count']}** films.")
+st.markdown(f"L'année avec le plus grand nombre de films sortis est en**{q1(db)['_id']}** avec **{q1(db)['count']}** films.")
 st.write("---")
 
 st.markdown("#### **Q2. Quel est le nombre de films sortis après l'année 1999 ?**")
@@ -21,8 +21,8 @@ st.markdown("#### **Q3. Quelle est la moyenne des votes des films sortis en 2007
 st.markdown(f"La moyenne des votes des films sortis en 2007 est de **{q3(db)}**.")
 st.write("---")
 
-st.markdown("#### **Q4. Affichez un histogramme qui permet de visualiser le nombres de films par année.**")
-st.write("Histogramme du nombres de films par année : ")
+st.markdown("#### **Q4. Affichez un histogramme qui permet de visualiser le nombre de films par année.**")
+st.write("Histogramme du nombre de films par année : ")
 q4(db)
 st.write("---")
 
@@ -60,7 +60,7 @@ for result in q9(db):
     st.write("---")    # Séparation
     
 st.markdown("#### **Q10. Quel est le film le plus long (Runtime) par genre ?**")
-st.write("Le films le plus long par genre est :")
+st.write("Le film le plus long par genre est :")
 for i in q10(db):
     genre = i['_id']
     title = i['longest_movie']
