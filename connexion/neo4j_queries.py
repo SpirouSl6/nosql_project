@@ -41,7 +41,7 @@ def q19():
     result = conn.query("""MATCH (a:Actors {name: 'Sarah Rialland Tardy'})-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(other:Actors)-[:A_JOUE]->(fo:Films) 
                         WHERE other.name <> a 
                         RETURN fo.title""") 
-    return result[0]
+    return result['fo.title']
 
 def q20():
     result = conn.query("""MATCH (d:Realisateur)-[:A_REALISE]->(f:Films)<-[:A_JOUE]-(a:Actors)
