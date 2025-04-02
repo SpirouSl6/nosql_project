@@ -22,7 +22,7 @@ st.write("\n".join([f"- **{actor['a.name']}**" for actor in q15()]))
 st.write("---")
 
 st.markdown("#### **Q16. Quel est l'acteur ayant joué dans des films totalisant le plus de revenus ?**")
-st.write(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}** euros de revenus pour tous les films.")
+st.write(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}**€ de revenus pour tous les films.")
 st.write("---")
 
 st.markdown("#### **Q17. Quelle est la moyenne des votes ?**")
@@ -162,26 +162,3 @@ q26()
 
 # Fermer la connexion Neo4j
 conn.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

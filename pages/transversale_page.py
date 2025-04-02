@@ -7,15 +7,14 @@ st.write("")  # Ajoute un saut de ligne
 st.write("")
 
 st.markdown("#### **Q27. Quels sont les films qui ont des genres en commun mais qui ont des réalisateurs différents ?**")
-st.write(f"Films avec des genres en commun mais des réalisateurs différents :")
+st.write(f"Les films avec des genres en commun mais des réalisateurs différents sont :")
 for row in q27():
     film1 = row['Film1']
     realisateur1 = row['Realisateur1']
     film2 = row['Film2']
     realisateur2 = row['Realisateur2']
     genres_communs = ", ".join(row['GenresPartages']) 
-    st.write(f"Films : {film1} ({realisateur1}) et {film2} ({realisateur2})")
-    st.write(f"Genres communs : {genres_communs}")
+    st.write(f"- Films : **{film1}** (de {realisateur1}) et **{film2}** (de {realisateur2}) avec **{genres_communs}** comme genre commun.")
     st.write("---")
 
 st.markdown("#### **Q28. Recommander des films aux utilisateurs en fonction des préférences d’un acteur donné.**")
@@ -38,10 +37,8 @@ for row in q29():
     year = row['year']
     shared_genres = row['shared_genres']
 
-    st.write(f"**Concurrence entre {realisateur1} et {realisateur2}** :")
-    st.write(f"**Films** : {film1} et {film2}")
-    st.write(f"**Année** : {year}")
-    st.write(f"**Genres partagés** : {', '.join(shared_genres)}")
+    st.write(f"- Concurrence entre **{realisateur1}** et **{realisateur2}** :")
+    st.write(f"**Films** : {film1} et {film2}, **Année** : {year}, **Genres partagés** : {', '.join(shared_genres)}")
     st.write("---")
 
 
@@ -56,10 +53,8 @@ for row in q30():
     ratings = row['ratings']
     total_revenue = row['total_revenue']
     
-    st.write(f"**Collaboration entre {realisateur} et {acteur}** :")
-    st.write(f"**Nombre de collaborations** : {collaboration_count}")
-    st.write(f"**Liste des notes des films** : {ratings}")
-    st.write(f"**Revenu total des films** : {total_revenue:,.2f}€")
+    st.write(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur **{acteur}** :")
+    st.write(f"**Nombre de collaborations** : {collaboration_count}, **Liste des notes des films** : {ratings}, **Revenu total des films** : {total_revenue:,.2f}€")
     st.write("---")
 
 
