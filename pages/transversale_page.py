@@ -15,7 +15,7 @@ for row in q27():
     realisateur2 = row['Realisateur2']
     genres_communs = ", ".join(row['GenresPartages']) 
     st.write(f"- Films : **{film1}** (de {realisateur1}) et **{film2}** (de {realisateur2}) avec **{genres_communs}** comme genre commun.")
-    st.write("---")
+st.write("---")
 
 st.markdown("#### **Q28. Recommander des films aux utilisateurs en fonction des préférences d’un acteur donné.**")
 # Liste des acteurs
@@ -39,7 +39,7 @@ for row in q29():
 
     st.write(f"- Concurrence entre **{realisateur1}** et **{realisateur2}** :")
     st.write(f"**Films** : {film1} et {film2}, **Année** : {year}, **Genres partagés** : {', '.join(shared_genres)}")
-    st.write("---")
+st.write("---")
 
 
 st.markdown("#### **Q30. Identifier les collaborations les plus fréquentes entre réalisateurs et acteurs, puis analyser si ces collaborations sont associées à un succès commercial ou critique.**")
@@ -55,7 +55,7 @@ for row in q30():
     
     st.write(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur **{acteur}** :")
     st.write(f"**Nombre de collaborations** : {collaboration_count}, **Liste des notes des films** : {ratings}, **Revenu total des films** : {total_revenue:,.2f}€")
-    st.write("---")
+st.write("---")
 
 
 
