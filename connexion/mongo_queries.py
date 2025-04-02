@@ -31,7 +31,7 @@ def q4(db):
         {"$group": {"_id": "$year", "count": {"$sum": 1}}},
         {"$sort": {"_id": 1}}]
     data = list(db.films.aggregate(pipeline))
-    years = [int(d["_id"]) for d in data]    # Liste des années
+    years = [d["_id"] for d in data]    # Liste des années
     counts = [d["count"] for d in data]   # Liste des nombres de films
  
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -39,6 +39,10 @@ def q4(db):
     ax.set_xlabel("Année")
     ax.set_ylabel("Nombre de films")
     ax.set_title("Nombre de films par année")
+    
+    # Forcer les années en affichage entier
+    ax.set_xticks(years)  
+    ax.set_xticklabels([str(year) for year in years]) 
 
     st.pyplot(fig)  # Affiche le graphique dans Streamlit
 
