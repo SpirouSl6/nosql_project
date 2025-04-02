@@ -1,9 +1,10 @@
 import streamlit as st
 from connexion.transversale_queries import *
 
+# Titre de l'application Streamlit
 st.title("NoSQL Databases - Projet")
 st.header("Questions transversales")
-st.markdown("")  # Ajoute un saut de ligne
+st.markdown("")  # Ajoute un saut de ligne pour l'affichage
 st.markdown("")
 
 st.markdown("#### **Q27. Quels sont les films qui ont des genres en commun mais qui ont des réalisateurs différents ?**")

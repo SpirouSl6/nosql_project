@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Titre de l'application Streamlit
 st.title("NoSQL Databases - Projet")
 
 # Sommaire avec liens cliquables

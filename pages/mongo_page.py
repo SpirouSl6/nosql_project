@@ -4,9 +4,10 @@ from connexion.mongo_co import get_database
 
 db = get_database()  # Récupération de la base de données
 
+# Titre de l'application Streamlit
 st.title("NoSQL Databases - Projet")
 st.header("Résultats MongoDB requêtes")
-st.markdown("")  # Ajoute un saut de ligne
+st.markdown("")  # Ajoute un saut de ligne pour l'affichage
 st.markdown("") 
 
 st.markdown("#### **Q1. Afficher l'année où le plus grand nombre de films ont été sortis.**")
@@ -107,11 +108,3 @@ if decade_runtimes[2010] < decade_runtimes[2000]:
 else:
     st.markdown("On remarque donc que la durée moyenne des films par décennie a **augmenté** entre les années 2000 et 2010 (il n'y a eu qu'un film dans les années 1970).")
 st.markdown("---")  
-
-
-
-
-
-
-
-        

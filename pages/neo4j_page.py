@@ -7,9 +7,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 
+# Titre de l'application Streamlit
 st.title("NoSQL Databases - Projet")
 st.header("Résultats Neo4j requêtes")
-st.markdown("")  # Ajoute un saut de ligne
+st.markdown("")  # Ajoute un saut de ligne pour l'affichage
 st.markdown("") 
 
 st.markdown("#### **Q14. Quel est l'acteur ayant joué dans le plus grand nombre de films ?**")
