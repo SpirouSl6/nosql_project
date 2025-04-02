@@ -1,5 +1,5 @@
 ## NoSQL Databases - Projet
-Exploration et Interrogation de Bases de Donn´ees NoSQL avec Python
+Exploration et Interrogation de Bases de Données NoSQL avec Python
 2024 - 2025
 
 
@@ -33,6 +33,12 @@ nosql_project/
 │── README.md                    # Documentation du projet
 
 
+## Application
+Le projet existe déjà en application déployée en ligne donc vous pouvez la trouver ici :
+https://nosqlproject-zpvtshappqwgqz4jycuxvox.streamlit.app/
+
+Si vous voulez lancer l'application vous-même, suivez les étapes des prérequis.
+
 ## Prérequis
 - Récupérer le projet :
 git clone https://github.com/SpirouSl6/nosql_project.git
@@ -46,6 +52,8 @@ Si Streamlit n'est pas reconnu, dans un terminal :
 pip show streamlit
 
 Récupérez la location et modifiez la fin du PATH pour avoir Python312\  (312 est ma version de python, vous pourriez en avoir une différente)
+
+- Ajoutez le fichier .env à la racine du projet
 
 - Pour lancer l'application, dans le terminal à la racine du projet : 
 streamlit run app.py
