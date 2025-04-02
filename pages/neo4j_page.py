@@ -34,7 +34,7 @@ st.write(f"Le genre le plus représenté dans la base de données est **{q18()['
 st.write("---")
 
 st.markdown("#### **Q19. Quels sont les films dans lesquels les acteurs ayant joué avec vous ont également joué ?**")
-st.write(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans :**{q19()}**")
+st.write(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans :")
 st.write("\n".join([f"- **{title['fo.title']}**" for title in q19()]))
 st.write("---")
 
