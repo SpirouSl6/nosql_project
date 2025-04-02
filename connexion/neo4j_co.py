@@ -11,7 +11,7 @@ load_dotenv()
 
 class Neo4jConnection:
     def __init__(self):
-        self.driver = GraphDatabase.driver(config.NEO4J_URI, auth=(config.NEO4J_USER, config.NEO4J_PASSWORD))
+        self.driver = GraphDatabase.driver(config.NEO4J_URI, auth=(config.NEO4J_USER, config.NEO4J_PASSWORD), encrypted=True)
 
     def query(self, query, parameters=None):
         with self.driver.session() as session:
