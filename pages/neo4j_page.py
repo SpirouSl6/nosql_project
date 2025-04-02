@@ -9,59 +9,59 @@ import io
 
 st.title("NoSQL Databases - Projet")
 st.header("Résultats Neo4j requêtes")
-st.write("")  # Ajoute un saut de ligne
-st.write("") 
+st.markdown("")  # Ajoute un saut de ligne
+st.markdown("") 
 
 st.markdown("#### **Q14. Quel est l'acteur ayant joué dans le plus grand nombre de films ?**")
-st.write(f"L'acteur ayant joué dans le plus grand nombre de films est **{q14()['a.name']}** avec **{q14()['FilmCount']}** films.")
-st.write("---")
+st.markdown(f"L'acteur ayant joué dans le plus grand nombre de films est **{q14()['a.name']}** avec **{q14()['FilmCount']}** films.")
+st.markdown("---")
 
 st.markdown("#### **Q15. Quels sont les acteurs ayant joué dans des films où l'actrice Anne Hathaway a également joué ?**")
-st.write(f"Les acteurs ayant joué dans les films où l'actrice Anne Hathaway a également joué sont :")
-st.write("\n".join([f"- **{actor['a.name']}**" for actor in q15()]))
-st.write("---")
+st.markdown(f"Les acteurs ayant joué dans les films où l'actrice Anne Hathaway a également joué sont :")
+st.markdown("\n".join([f"- **{actor['a.name']}**" for actor in q15()]))
+st.markdown("---")
 
 st.markdown("#### **Q16. Quel est l'acteur ayant joué dans des films totalisant le plus de revenus ?**")
-st.write(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}**€ de revenus pour tous les films.")
-st.write("---")
+st.markdown(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}**€ de revenus pour tous les films.")
+st.markdown("---")
 
 st.markdown("#### **Q17. Quelle est la moyenne des votes ?**")
-st.write(f"La moyenne des votes sur tous les films est de **{round(q17(), 2)}**.")
-st.write("---")
+st.markdown(f"La moyenne des votes sur tous les films est de **{round(q17(), 2)}**.")
+st.markdown("---")
 
 st.markdown("#### **Q18. Quel est le genre le plus représenté dans la base de données ?**")
-st.write(f"Le genre le plus représenté dans la base de données est **{q18()['genre']}** avec **{q18()['genre_count']}** films.")
-st.write("---")
+st.markdown(f"Le genre le plus représenté dans la base de données est **{q18()['genre']}** avec **{q18()['genre_count']}** films.")
+st.markdown("---")
 
 st.markdown("#### **Q19. Quels sont les films dans lesquels les acteurs ayant joué avec vous ont également joué ?**")
-st.write(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans :")
-st.write("\n".join([f"- **{title['fo.title']}**" for title in q19()]))
-st.write("---")
+st.markdown(f"Les films dans lesquels les acteurs ayant joué avec moi ont également joué dans :")
+st.markdown("\n".join([f"- **{title['fo.title']}**" for title in q19()]))
+st.markdown("---")
 
 st.markdown("#### **Q20. Quel réalisateur a travaillé avec le plus grand nombre d'acteurs distincts ?**")
-st.write(f"Le réalisateur **{q20()['d.name']}**  a travaillé avec le plus grand nombre d'acteurs distincts : **{q20()['NombreActeurs']}** acteurs.")
-st.write("---")
+st.markdown(f"Le réalisateur **{q20()['d.name']}**  a travaillé avec le plus grand nombre d'acteurs distincts : **{q20()['NombreActeurs']}** acteurs.")
+st.markdown("---")
 
 st.markdown("#### **Q21. Quels sont les films les plus “connectés”, c'est-à-dire ceux qui ont le plus d'acteurs en commun avec d'autres films ?**")
-st.write(f"Les films les plus 'connectés', c'est-à-dire ceux qui ont le plus d'acteurs en commun avec d'autres films sont :")
-st.write("\n".join([f"- **{film['f1.title']}** avec **{film['NombreFilmsConnectes']}** films connectés" for film in q21()]))
-st.write("---")
+st.markdown(f"Les films les plus 'connectés', c'est-à-dire ceux qui ont le plus d'acteurs en commun avec d'autres films sont :")
+st.markdown("\n".join([f"- **{film['f1.title']}** avec **{film['NombreFilmsConnectes']}** films connectés" for film in q21()]))
+st.markdown("---")
 
 st.markdown("#### **Q22. Trouver les 5 acteurs ayant joué avec le plus de réalisateurs différents.**")
-st.write(f"Les 5 acteurs ayant joué avec le plus de réalisateurs différents sont :")
-st.write("\n".join([f"- **{acteur['a.name']}** avec **{acteur['NombreRealisateurs']}** réalisateurs différents" for acteur in q22()]))
-st.write("---")
+st.markdown(f"Les 5 acteurs ayant joué avec le plus de réalisateurs différents sont :")
+st.markdown("\n".join([f"- **{acteur['a.name']}** avec **{acteur['NombreRealisateurs']}** réalisateurs différents" for acteur in q22()]))
+st.markdown("---")
 
 st.markdown("#### **Q23. Recommander un film à un acteur en fonction des genres des films où il a déjà joué.**")
-st.write(f"Le film recommandé à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué est **{q23()['f2.title']}** ({q23()['f2.genre']})")
-st.write("---")
+st.markdown(f"Le film recommandé à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué est **{q23()['f2.title']}** ({q23()['f2.genre']})")
+st.markdown("---")
 
 st.markdown("#### **Q24. Créer une relation INFLUENCE PAR entre les réalisateurs en se basant sur des similarités dans les genres de films qu'ils ont réalisés.**")
-st.write(f"Il y a **{q24_1()['count(r)']}** relations d'influence.")
+st.markdown(f"Il y a **{q24_1()['count(r)']}** relations d'influence.")
 
-st.write(f"Les réalisateurs influencés par Kenneth Lonergan sont :")
-st.write("\n".join([f"- **{r['d1.name']}**" for r in q24_2()]))
-st.write("---")
+st.markdown(f"Les réalisateurs influencés par Kenneth Lonergan sont :")
+st.markdown("\n".join([f"- **{r['d1.name']}**" for r in q24_2()]))
+st.markdown("---")
 
 st.markdown("#### **Q25. Quel est le “chemin” le plus court entre deux acteurs donnés (ex : Tom Hanks et Scarlett Johansson) ?**")
 # Initialisation des variables pour les acteurs et films
@@ -77,12 +77,12 @@ for element in q25()['p']:
 
 # Créer une chaîne de caractères qui décrit le chemin
 chemin_str = " → ".join([f"{acteurs[i]} → {films[i]} → {acteurs[i+1]}" for i in range(len(acteurs)-1)])
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {chemin_str}")
-st.write("---")
+st.markdown(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {chemin_str}")
+st.markdown("---")
 
 st.markdown("#### **Q26. Analyser les communautés d'acteurs : Quels sont les groupes d'acteurs qui ont tendance à travailler ensemble ? (Utilisation d'algorithmes de détection de communauté comme Louvain.)**")
 #st.subheader("Communautés d'acteurs selon Louvain")
-st.write("Toutes les communautés d'acteurs selon Louvain")
+st.markdown("Toutes les communautés d'acteurs selon Louvain")
 def q26():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_JOUE]-(b:Actors)
                            WHERE a <> b
@@ -125,7 +125,7 @@ def q26():
             communities[community_id] = []
         communities[community_id].append(actor)
 
-    st.write("Chaque communauté d'acteurs selon Louvain")
+    st.markdown("Chaque communauté d'acteurs selon Louvain")
     # Créer et afficher un graphe pour chaque communauté
     community_plots = []
     for community_id, actors in communities.items():
