@@ -12,25 +12,7 @@ récupérant les données pertinentes.
 
 
 ## Structure du projet
-nosql_project/
-│── connexion/               # Gestion des connexions aux bases de données et fonctions des requêtes
-│   ├── bd_neo4j.py             # Importation des données de MongoDB à Neo4j
-│   ├── mongo_co.py             # Connexion à MongoDB
-│   ├── mongo_queries.py        # Requêtes pour MongoDB
-│   ├── neo4j_co.py             # Connexion à Neo4j
-│   ├── neo4j_queries.py        # Requêtes pour Neo4j
-│   ├── transversale_queries.py # Requêtes combinant MongoDB et Neo4j
-│── pages/               # Pages Streamlit
-│── ├── mongo_page.py       # Configuration de l'affichage des réponses des requêtes MongoDB
-│── ├── neo4j_page.py       # Configuration de l'affichage des réponses des requêtes Neo4j
-│── ├── transversale_page.py       # Configuration de l'affichage des réponses des requêtes transversales (Neo4j)
-│── app.py                      # Point d’entrée principal de l’application Streamlit
-│── config.py                   # Fichier de configuration du projet
-│── .env                        # Variables d’environnement (MongoDB, Neo4j)
-│── .gitignore                  # Fichiers à ignorer dans Git
-│── requirements.txt             # Liste des dépendances
-│── docker-compose.yml           # Configuration Docker pour MongoDB et Neo4j
-│── README.md                    # Documentation du projet
+nosql_project/ │ ├── connexion/ # Gestion des connexions aux bases de données et fonctions des requêtes │ ├── bd_neo4j.py # Importation des données de MongoDB à Neo4j │ ├── mongo_co.py # Connexion à MongoDB │ ├── mongo_queries.py # Requêtes pour MongoDB │ ├── neo4j_co.py # Connexion à Neo4j │ ├── neo4j_queries.py # Requêtes pour Neo4j │ └── transversale_queries.py # Requêtes combinant MongoDB et Neo4j │ ├── pages/ # Pages Streamlit │ ├── mongo_page.py # Configuration de l'affichage des réponses des requêtes MongoDB │ ├── neo4j_page.py # Configuration de l'affichage des réponses des requêtes Neo4j │ └── transversale_page.py # Configuration de l'affichage des réponses des requêtes transversales (Neo4j) │ ├── app.py # Point d’entrée principal de l’application Streamlit ├── config.py # Fichier de configuration du projet ├── .env # Variables d’environnement (MongoDB, Neo4j) ├── .gitignore # Fichiers à ignorer dans Git ├── requirements.txt # Liste des dépendances ├── docker-compose.yml # Configuration Docker pour MongoDB et Neo4j └── README.md # Documentation du projet
 
 
 ## Application
