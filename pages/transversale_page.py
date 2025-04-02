@@ -38,7 +38,8 @@ for row in q29():
     shared_genres = row['shared_genres']
 
     st.markdown(f"- Concurrence entre **{realisateur1}** et **{realisateur2}** :")
-    st.markdown(f"**Films** : {film1} et {film2}, **Année** : {year}, **Genres partagés** : {', '.join(shared_genres)}\n")
+    st.markdown(f"**Films** : {film1} et {film2}, **Année** : {year}, **Genres partagés** : {', '.join(shared_genres)}")
+    st.markdown("")
 st.markdown("---")
 
 
@@ -54,7 +55,8 @@ for row in q30():
     total_revenue = row['total_revenue']
     
     st.markdown(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur **{acteur}** :")
-    st.markdown(f"**Nombre de collaborations** : {collaboration_count}, **Liste des notes des films** : {ratings}, **Revenu total des films** : {total_revenue:,.2f}€\n")
+    st.markdown(f"**Nombre de collaborations** : {collaboration_count}, **Liste des notes des films** : {ratings}, **Revenu total des films** : {total_revenue:,.2f}€")
+    st.markdown("")
 st.markdown("---")
 
 
