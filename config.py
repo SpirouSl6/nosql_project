@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 # Charger les variables du fichier .env
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
 # Charger l'URI depuis les variables d'environnement
 MONGO_URI = os.getenv("MONGO_URI")
