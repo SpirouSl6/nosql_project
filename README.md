@@ -34,6 +34,9 @@ nosql_project/
 
 
 ## Prérequis
+- Récupérer le projet :
+git clone https://github.com/SpirouSl6/nosql_project.git
+
 - Installer les dépendances du projet :
 pip install -r requirements.txt
 
