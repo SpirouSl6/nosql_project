@@ -53,11 +53,11 @@ st.write("\n".join([f"- **{acteur['a.name']}** avec **{acteur['NombreRealisateur
 st.write("---")
 
 st.markdown("#### **Q23. Recommander un film à un acteur en fonction des genres des films où il a déjà joué.**")
-st.write(f"Films recommandés à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué :**{q23()['f2.title']}** ({q23()['f2.genre']})")
+st.write(f"Le film recommandé à un acteur (Chris Pratt) en fonction des genres des films où il a déjà joué est **{q23()['f2.title']}** ({q23()['f2.genre']})")
 st.write("---")
 
 st.markdown("#### **Q24. Créer une relation INFLUENCE PAR entre les réalisateurs en se basant sur des similarités dans les genres de films qu'ils ont réalisés.**")
-st.write(f"Nombre de relations d'influence : **{q24_1()['count(r)']}**.")
+st.write(f"Il y a **{q24_1()['count(r)']}** relations d'influence.")
 
 st.write(f"Les réalisateurs influencés par Kenneth Lonergan sont :")
 st.write("\n".join([f"- **{r['d1.name']}**" for r in q24_2()]))
@@ -77,7 +77,7 @@ for element in q25()['p']:
 
 # Créer une chaîne de caractères qui décrit le chemin
 chemin_str = " → ".join([f"{acteurs[i]} → {films[i]} → {acteurs[i+1]}" for i in range(len(acteurs)-1)])
-st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : \n{chemin_str}")
+st.write(f"Le 'chemin' le plus court entre deux acteurs (Daniel Giménez Cacho et Scarlett Johansson) est : {chemin_str}")
 st.write("---")
 
 st.markdown("#### **Q26. Analyser les communautés d'acteurs : Quels sont les groupes d'acteurs qui ont tendance à travailler ensemble ? (Utilisation d'algorithmes de détection de communauté comme Louvain.)**")
