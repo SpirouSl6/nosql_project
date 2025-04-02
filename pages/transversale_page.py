@@ -44,25 +44,21 @@ st.markdown("---")
 
 
 st.markdown("#### **Q30. Identifier les collaborations les plus fréquentes entre réalisateurs et acteurs, puis analyser si ces collaborations sont associées à un succès commercial ou critique.**")
-st.markdown("Voici les collaborations les plus fréquentes entre réalisateurs et acteurs avec leurs succès commercial et critique :")
+st.markdown("Voici les collaborations les plus fréquentes entre réalisateurs et acteurs avec leur succès commercial et critique :")
 
 # Affichage sous forme de liste
 for row in q30():
     realisateur = row['Realisateur']
     acteur = row['Acteur']
     collaboration_count = row['collaboration_count']
-    ratings = row['ratings']
     total_revenue = row['total_revenue']
     
-    # Détermination du succès commercial
-    succes_commercial = "**Succès commercial**" if total_revenue > 500 else " **Peu de succès commercial**"
-
-    # Détermination du succès critique
-    succes_critique = "**Succès critique ou notes non précisée**" if any(rating != "G" for rating in ratings) else " **Pas de succès critique**"
+    # Détermination du succès commercial ou critique
+    succes_commercial = "**Succès commercial**" if total_revenue > 500 else " **Succès critique**"
     
     st.markdown(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur **{acteur}** :")
-    st.markdown(f"**Nombre de collaborations** : {collaboration_count}, **Liste des notes des films** : {ratings}, **Revenu total des films** : {total_revenue:,.2f} millions d'euros")
-    st.markdown(f"{succes_commercial} | {succes_critique}")
+    st.markdown(f"**Nombre de collaborations** : {collaboration_count}, **Revenu total des films** : {total_revenue:,.2f} millions d'euros")
+    st.markdown(f"{succes_commercial}")
     st.markdown("")
 st.markdown("---")
 

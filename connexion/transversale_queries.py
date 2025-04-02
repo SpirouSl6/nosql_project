@@ -52,10 +52,10 @@ def q29():
 
 def q30():
     result = conn.query("""MATCH (a:Actors)-[:A_JOUE]->(f:Films)<-[:A_REALISE]-(r:Realisateur)
-                           WITH r, a, COUNT(f) AS collaboration_count, COLLECT(f.rating) AS ratings, SUM(COALESCE(toFloat(f.revenue), 0)) AS total_revenue
+                           WITH r, a, COUNT(f) AS collaboration_count, SUM(COALESCE(toFloat(f.revenue), 0)) AS total_revenue
                            WHERE collaboration_count >= 2
                            ORDER BY collaboration_count DESC
-                           RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, ratings, total_revenue""")
+                           RETURN r.name AS Realisateur, a.name AS Acteur, collaboration_count, total_revenue""")
     return result
 
 # Fermer la connexion Neo4j
