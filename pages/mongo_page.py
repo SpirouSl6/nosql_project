@@ -93,13 +93,13 @@ decade_runtimes = {}
 for i in q13(db):
     decade = i["_id"]
     avg_runtime = i["avg_runtime"]
+    decade_runtimes[decade] = avg_runtime
     st.markdown(f"- **{decade}s** : Durée moyenne = {avg_runtime:.2f} minutes")
     
-    decade_runtimes[decade] = avg_runtime
-    if decade_runtimes[2010] < decade_runtimes[2000]:
-        st.markdown("On remarque donc que la durée moyenne des films par décennie a **diminué** entre les années 2000 et 2010 (il n'y a eu qu'un film dans les années 1970).")
-    else:
-        st.markdown("On remarque donc que la durée moyenne des films par décennie a **augmenté** entre les années 2000 et 2010 (il n'y a eu qu'un film dans les années 1970).")
+if decade_runtimes[2010] < decade_runtimes[2000]:
+    st.markdown("On remarque donc que la durée moyenne des films par décennie a **diminué** entre les années 2000 et 2010 (il n'y a eu qu'un film dans les années 1970).")
+else:
+    st.markdown("On remarque donc que la durée moyenne des films par décennie a **augmenté** entre les années 2000 et 2010 (il n'y a eu qu'un film dans les années 1970).")
 st.markdown("---")  
 
 
