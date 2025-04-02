@@ -32,7 +32,7 @@ def q4(db):
         {"$sort": {"_id": 1}}]
     data = list(db.films.aggregate(pipeline))
     years = [d["_id"] for d in data if d["_id"] is not None]    # Liste des années
-    counts = [d["count"] for d in data]   # Liste des nombres de films
+    counts = [d["count"] for d in data if d["_id"] is not None]   # Liste des nombres de films
  
     fig, ax = plt.subplots(figsize=(12, 6))
     sns.barplot(x=years, y=counts, ax=ax)   #Crée un histogramme
