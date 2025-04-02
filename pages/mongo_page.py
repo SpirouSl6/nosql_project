@@ -81,10 +81,16 @@ st.markdown("Calcul de la corrélation entre la durée des films et leurs revenu
 correlation, p_value = q12(db)
 st.markdown(f"**Corrélation (r)** : {correlation:.2f}")
 st.markdown(f"**P-value** : {p_value:.5f}")
+# Interprétation des résultats
 if p_value < 0.05:
-    st.markdown("La corrélation est statistiquement significative (p-value < 0.05).")
+    if correlation > 0:
+        st.markdown("La corrélation est **positive** et statistiquement significative (p-value < 0.05). Cela signifie que les films plus longs ont **tendance à générer plus de revenus**.")
+    elif correlation < 0:
+        st.markdown("La corrélation est **négative** et statistiquement significative (p-value < 0.05). Cela signifie que les films plus longs ont **tendance à générer moins de revenus**.")
+    else:
+        st.markdown("Bien que statistiquement significative, la corrélation est **très faible**, ce qui signifie qu'il n'y a pas de lien clair entre la durée des films et leurs revenus.")
 else:
-    st.markdown("La corrélation n'est pas statistiquement significative (p-value >= 0.05).")
+    st.markdown("La corrélation **n'est pas statistiquement significative** (p-value >= 0.05). Cela signifie que l'on **ne peut pas conclure** à une relation fiable entre la durée des films et leurs revenus.")
 st.markdown("---")  
 
 st.markdown("#### **Q13. Y a-t-il une évolution de la durée moyenne des films par décennie ?**")
