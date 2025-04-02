@@ -22,7 +22,7 @@ st.markdown("\n".join([f"- **{actor['a.name']}**" for actor in q15()]))
 st.markdown("---")
 
 st.markdown("#### **Q16. Quel est l'acteur ayant joué dans des films totalisant le plus de revenus ?**")
-st.markdown(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}**miliions d'euros de revenus pour tous les films.")
+st.markdown(f"L'acteur **{q16()['a.name']}** a joué dans des films totalisant le plus de revenus avec **{q16()['TotalRevenue']}**millions d'euros de revenus pour tous les films.")
 st.markdown("---")
 
 st.markdown("#### **Q17. Quelle est la moyenne des votes ?**")

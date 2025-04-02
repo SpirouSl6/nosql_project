@@ -56,7 +56,7 @@ for row in q30():
     # Détermination du succès commercial ou critique
     succes_commercial = "**Succès commercial**" if total_revenue > 500 else " **Succès critique**"
     
-    st.markdown(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur **{acteur}** :")
+    st.markdown(f"- Collaboration entre le réalisateur **{realisateur}** et l'acteur/actrice **{acteur}** :")
     st.markdown(f"**Nombre de collaborations** : {collaboration_count}, **Revenu total des films** : {total_revenue:,.2f} millions d'euros")
     st.markdown(f"{succes_commercial}")
     st.markdown("")
